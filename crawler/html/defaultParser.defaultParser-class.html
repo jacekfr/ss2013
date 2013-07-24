@@ -1,0 +1,948 @@
+<?xml version="1.0" encoding="ascii"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+          "DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+  <title>defaultParser.defaultParser</title>
+  <link rel="stylesheet" href="epydoc.css" type="text/css" />
+  <script type="text/javascript" src="epydoc.js"></script>
+</head>
+
+<body bgcolor="white" text="black" link="blue" vlink="#204080"
+      alink="#204080">
+<!-- ==================== NAVIGATION BAR ==================== -->
+<table class="navbar" border="0" width="100%" cellpadding="0"
+       bgcolor="#a0c0ff" cellspacing="0">
+  <tr valign="middle">
+
+  <!-- Tree link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="module-tree.html">Trees</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Index link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="identifier-index.html">Indices</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Help link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="help.html">Help</a>&nbsp;&nbsp;&nbsp;</th>
+
+      <th class="navbar" width="100%"></th>
+  </tr>
+</table>
+<table width="100%" cellpadding="0" cellspacing="0">
+  <tr valign="top">
+    <td width="100%">
+      <span class="breadcrumbs">
+        <a href="defaultParser-module.html">Module&nbsp;defaultParser</a> ::
+        Class&nbsp;defaultParser
+      </span>
+    </td>
+    <td>
+      <table cellpadding="0" cellspacing="0">
+        <!-- hide/show private -->
+        <tr><td align="right"><span class="options">[<a href="javascript:void(0);" class="privatelink"
+    onclick="toggle_private();">hide&nbsp;private</a>]</span></td></tr>
+        <tr><td align="right"><span class="options"
+            >[<a href="frames.html" target="_top">frames</a
+            >]&nbsp;|&nbsp;<a href="defaultParser.defaultParser-class.html"
+            target="_top">no&nbsp;frames</a>]</span></td></tr>
+      </table>
+    </td>
+  </tr>
+</table>
+<!-- ==================== CLASS DESCRIPTION ==================== -->
+<h1 class="epydoc">Class defaultParser</h1><p class="nomargin-top"><span class="codelink"><a href="defaultParser-pysrc.html#defaultParser">source&nbsp;code</a></span></p>
+<pre class="base-tree">
+markupbase.ParserBase --+    
+                        |    
+       sgmllib.SGMLParser --+
+                            |
+                           <strong class="uidshort">defaultParser</strong>
+</pre>
+
+<dl><dt>Known Subclasses:</dt>
+<dd>
+      <ul class="subclass-list">
+<li><a href="BloombergMobileParser.BloombergMobileParser-class.html">BloombergMobileParser.BloombergMobileParser</a></li><li>, <a href="BloombergParser.BloombergParser-class.html">BloombergParser.BloombergParser</a></li><li>, <a href="ReutersMobileParser.ReutersMobileParser-class.html">ReutersMobileParser.ReutersMobileParser</a></li><li>, <a href="ReutersParser.ReutersParser-class.html">ReutersParser.ReutersParser</a></li><li>, <a href="YahooCompaniesHoldersParser.YahooCompaniesHoldersParser-class.html">YahooCompaniesHoldersParser.YahooCompaniesHoldersParser</a></li><li>, <a href="YahooCompaniesParser.YahooCompaniesParser-class.html">YahooCompaniesParser.YahooCompaniesParser</a></li><li>, <a href="YahooIndustryindexParser.YahooIndustryindexParser-class.html">YahooIndustryindexParser.YahooIndustryindexParser</a></li>  </ul>
+</dd></dl>
+
+<hr />
+<p>Parser domyslny. Dziedziczy po klasie SGMLParser z modulu sgmllib. 
+  Parser ten sluzy jedynie do parsowania stron z archiwow newsow.</p>
+
+<hr />
+<div class="fields">      <strong>Requires:</strong>
+      <ul class="nomargin-top">
+        <li>
+        SGMLParser
+        </li>
+        <li>
+        string
+        </li>
+        <li>
+        urllib
+        </li>
+        <li>
+        re
+        </li>
+      </ul>
+      <dl><dt>See Also:</dt>
+        <dd>
+          <a href="BloombergMobileParser.BloombergMobileParser-class.html" 
+          class="link">BloombergMobileParser.BloombergMobileParser</a>,
+          <a href="ReutersMobileParser.ReutersMobileParser-class.html" 
+          class="link">ReutersMobileParser.ReutersMobileParser</a>,
+          <a href="BloombergParser.BloombergParser-class.html" 
+          class="link">BloombergParser.BloombergParser</a>,
+          <a href="ReutersParser.ReutersParser-class.html" 
+          class="link">ReutersParser.ReutersParser</a>,
+          <a href="YahooCompaniesParser.YahooCompaniesParser-class.html" 
+          class="link">YahooCompaniesParser.YahooCompaniesParser</a>
+        </dd>
+      </dl>
+</div><!-- ==================== INSTANCE METHODS ==================== -->
+<a name="section-InstanceMethods"></a>
+<table class="summary" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr bgcolor="#70b0f0" class="table-header">
+  <td colspan="2" class="table-header">
+    <table border="0" cellpadding="0" cellspacing="0" width="100%">
+      <tr valign="top">
+        <td align="left"><span class="table-header">Instance Methods</span></td>
+        <td align="right" valign="top"
+         ><span class="options">[<a href="#section-InstanceMethods"
+         class="privatelink" onclick="toggle_private();"
+         >hide private</a>]</span></td>
+      </tr>
+    </table>
+  </td>
+</tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="defaultParser.defaultParser-class.html#reset" class="summary-sig-name">reset</a>(<span class="summary-sig-arg">self</span>)</span><br />
+      Metoda wywolywana przy rozpoczeciu parsowania pliku.</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="defaultParser-pysrc.html#defaultParser.reset">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">string</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="defaultParser.defaultParser-class.html#clearSource" class="summary-sig-name">clearSource</a>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">_source</span>)</span><br />
+      Metoda czysci zrodlo z pojedynczych tagow HTML</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="defaultParser-pysrc.html#defaultParser.clearSource">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">string</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="defaultParser.defaultParser-class.html#cleanTags" class="summary-sig-name">cleanTags</a>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">_source</span>)</span><br />
+      Alternatywna metoda czyszczaca zrodlo z tagow HTML</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="defaultParser-pysrc.html#defaultParser.cleanTags">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">string</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="defaultParser.defaultParser-class.html#getId" class="summary-sig-name">getId</a>(<span class="summary-sig-arg">self</span>)</span><br />
+      Metoda zwracajaca id obiektu</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="defaultParser-pysrc.html#defaultParser.getId">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="defaultParser.defaultParser-class.html#handle_data" class="summary-sig-name">handle_data</a>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">data</span>)</span><br />
+      Metoda przchwytujaca aktualnie przetwarzany tekst.</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="defaultParser-pysrc.html#defaultParser.handle_data">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="defaultParser.defaultParser-class.html#start_a" class="summary-sig-name">start_a</a>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">attrs</span>)</span><br />
+      Metoda wywolywana przy napotkaniu na znacznik &lt;a&gt;.</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="defaultParser-pysrc.html#defaultParser.start_a">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="defaultParser.defaultParser-class.html#end_a" class="summary-sig-name">end_a</a>(<span class="summary-sig-arg">self</span>)</span><br />
+      Metoda wywolywana przy napotkaniu na znacznik &lt;/a&gt;.</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="defaultParser-pysrc.html#defaultParser.end_a">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">string</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="defaultParser.defaultParser-class.html#getAddrE" class="summary-sig-name">getAddrE</a>(<span class="summary-sig-arg">self</span>)</span><br />
+      Metoda zwraca wzorzec adresu</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="defaultParser-pysrc.html#defaultParser.getAddrE">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">string</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="defaultParser.defaultParser-class.html#getAddr" class="summary-sig-name">getAddr</a>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">_day</span>,
+        <span class="summary-sig-arg">_month</span>,
+        <span class="summary-sig-arg">_year</span>)</span><br />
+      Metoda zwraca przetworzony adres URL strony archiwum.</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="defaultParser-pysrc.html#defaultParser.getAddr">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">list of strings</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="defaultParser.defaultParser-class.html#getAddrList" class="summary-sig-name">getAddrList</a>(<span class="summary-sig-arg">self</span>)</span><br />
+      Metoda zwraca liste adresow newsow.</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="defaultParser-pysrc.html#defaultParser.getAddrList">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="defaultParser.defaultParser-class.html#parsePageSource" class="summary-sig-name">parsePageSource</a>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">_url</span>)</span><br />
+      Metoda sluzacza do parsowania strony o adresie podanym w parametrze.</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="defaultParser-pysrc.html#defaultParser.parsePageSource">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+  <tr>
+    <td colspan="2" class="summary">
+    <p class="indent-wrapped-lines"><b>Inherited from <code>sgmllib.SGMLParser</code></b>:
+      <code>__init__</code>,
+      <code>close</code>,
+      <code>convert_charref</code>,
+      <code>convert_codepoint</code>,
+      <code>convert_entityref</code>,
+      <code>error</code>,
+      <code>feed</code>,
+      <code>finish_endtag</code>,
+      <code>finish_shorttag</code>,
+      <code>finish_starttag</code>,
+      <code>get_starttag_text</code>,
+      <code>goahead</code>,
+      <code>handle_charref</code>,
+      <code>handle_comment</code>,
+      <code>handle_decl</code>,
+      <code>handle_endtag</code>,
+      <code>handle_entityref</code>,
+      <code>handle_pi</code>,
+      <code>handle_starttag</code>,
+      <code>parse_endtag</code>,
+      <code>parse_pi</code>,
+      <code>parse_starttag</code>,
+      <code>report_unbalanced</code>,
+      <code>setliteral</code>,
+      <code>setnomoretags</code>,
+      <code>unknown_charref</code>,
+      <code>unknown_endtag</code>,
+      <code>unknown_entityref</code>,
+      <code>unknown_starttag</code>
+      </p>
+    <div class="private">    <p class="indent-wrapped-lines"><b>Inherited from <code>sgmllib.SGMLParser</code></b> (private):
+      <code>_convert_ref</code>
+      </p></div>
+    <p class="indent-wrapped-lines"><b>Inherited from <code>markupbase.ParserBase</code></b>:
+      <code>getpos</code>,
+      <code>parse_comment</code>,
+      <code>parse_declaration</code>,
+      <code>parse_marked_section</code>,
+      <code>unknown_decl</code>,
+      <code>updatepos</code>
+      </p>
+    <div class="private">    <p class="indent-wrapped-lines"><b>Inherited from <code>markupbase.ParserBase</code></b> (private):
+      <code>_parse_doctype_attlist</code>,
+      <code>_parse_doctype_element</code>,
+      <code>_parse_doctype_entity</code>,
+      <code>_parse_doctype_notation</code>,
+      <code>_parse_doctype_subset</code>,
+      <code>_scan_name</code>
+      </p></div>
+    </td>
+  </tr>
+</table>
+<!-- ==================== CLASS VARIABLES ==================== -->
+<a name="section-ClassVariables"></a>
+<table class="summary" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr bgcolor="#70b0f0" class="table-header">
+  <td colspan="2" class="table-header">
+    <table border="0" cellpadding="0" cellspacing="0" width="100%">
+      <tr valign="top">
+        <td align="left"><span class="table-header">Class Variables</span></td>
+        <td align="right" valign="top"
+         ><span class="options">[<a href="#section-ClassVariables"
+         class="privatelink" onclick="toggle_private();"
+         >hide private</a>]</span></td>
+      </tr>
+    </table>
+  </td>
+</tr>
+  <tr>
+    <td colspan="2" class="summary">
+    <p class="indent-wrapped-lines"><b>Inherited from <code>sgmllib.SGMLParser</code></b>:
+      <code>entity_or_charref</code>,
+      <code>entitydefs</code>
+      </p>
+    <div class="private">    <p class="indent-wrapped-lines"><b>Inherited from <code>sgmllib.SGMLParser</code></b> (private):
+      <code>_decl_otherchars</code>
+      </p></div>
+    </td>
+  </tr>
+</table>
+<!-- ==================== INSTANCE VARIABLES ==================== -->
+<a name="section-InstanceVariables"></a>
+<table class="summary" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr bgcolor="#70b0f0" class="table-header">
+  <td colspan="2" class="table-header">
+    <table border="0" cellpadding="0" cellspacing="0" width="100%">
+      <tr valign="top">
+        <td align="left"><span class="table-header">Instance Variables</span></td>
+        <td align="right" valign="top"
+         ><span class="options">[<a href="#section-InstanceVariables"
+         class="privatelink" onclick="toggle_private();"
+         >hide private</a>]</span></td>
+      </tr>
+    </table>
+  </td>
+</tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">string</span>
+    </td><td class="summary">
+        <a name="id"></a><span class="summary-name">id</span><br />
+      unikalny symbol parsera
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">string</span>
+    </td><td class="summary">
+        <a name="addr"></a><span class="summary-name">addr</span><br />
+      wzorzec adresu strony archiwum
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">list of strings</span>
+    </td><td class="summary">
+        <a name="urls"></a><span class="summary-name">urls</span><br />
+      lista adresow wyciagnietych ze strony archiwum
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">list of strings</span>
+    </td><td class="summary">
+        <a name="data"></a><span class="summary-name">data</span><br />
+      zmienna pomocnicza do przechowywania aktualnie przewarzanej czesci 
+      strony
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">list of strings</span>
+    </td><td class="summary">
+        <a name="data_url"></a><span class="summary-name">data_url</span><br />
+      zmienna pomocnicza do przechowywania aktualnie przewarzanej czesci 
+      strony (do wyciagania nazw linkow)
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">list of tuples of strings</span>
+    </td><td class="summary">
+        <a name="addrs"></a><span class="summary-name">addrs</span><br />
+      lista adresow wyciagnietych ze strony archiwum wraz z nazwami linkow
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">string</span>
+    </td><td class="summary">
+        <a name="title"></a><span class="summary-name">title</span><br />
+      tytul newsa
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">string</span>
+    </td><td class="summary">
+        <a name="timestamp"></a><span class="summary-name">timestamp</span><br />
+      znacznik czasowy newsa
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">string</span>
+    </td><td class="summary">
+        <a name="content"></a><span class="summary-name">content</span><br />
+      tresc newsa
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">list of strings</span>
+    </td><td class="summary">
+        <a name="categories"></a><span class="summary-name">categories</span><br />
+      lista kategorii (aktualnie nie wykorzystywana)
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">boolean</span>
+    </td><td class="summary">
+        <a name="endContent"></a><span class="summary-name">endContent</span><br />
+      Flaga oznaczajaca koniec przechwytywania tresci newsa
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+        <a name="endTimestamp"></a><span class="summary-name">endTimestamp</span><br />
+      Flaga oznaczajaca koniec przechwytywania znacznika czasowego
+    </td>
+  </tr>
+</table>
+<!-- ==================== METHOD DETAILS ==================== -->
+<a name="section-MethodDetails"></a>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr bgcolor="#70b0f0" class="table-header">
+  <td colspan="2" class="table-header">
+    <table border="0" cellpadding="0" cellspacing="0" width="100%">
+      <tr valign="top">
+        <td align="left"><span class="table-header">Method Details</span></td>
+        <td align="right" valign="top"
+         ><span class="options">[<a href="#section-MethodDetails"
+         class="privatelink" onclick="toggle_private();"
+         >hide private</a>]</span></td>
+      </tr>
+    </table>
+  </td>
+</tr>
+</table>
+<a name="reset"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">reset</span>(<span class="sig-arg">self</span>)</span>
+  </h3>
+  </td><td align="right" valign="top"
+    ><span class="codelink"><a href="defaultParser-pysrc.html#defaultParser.reset">source&nbsp;code</a></span>&nbsp;
+    </td>
+  </tr></table>
+  
+  <p>Metoda wywolywana przy rozpoczeciu parsowania pliku. Inicjuje 
+  wszystkie podstawowe zmienne parsera.</p>
+  <dl class="fields">
+    <dt>Overrides:
+        markupbase.ParserBase.reset
+    </dt>
+  </dl>
+<div class="fields">      <dl><dt>See Also:</dt>
+        <dd>
+          <a href="defaultParser.defaultParser-class.html#id" 
+          class="link">id</a>,
+          <a href="defaultParser.defaultParser-class.html#addr" 
+          class="link">addr</a>,
+          <a href="defaultParser.defaultParser-class.html#data" 
+          class="link">data</a>,
+          <a href="defaultParser.defaultParser-class.html#data_url" 
+          class="link">data_url</a>,
+          <a href="defaultParser.defaultParser-class.html#addrs" 
+          class="link">addrs</a>,
+          <a href="defaultParser.defaultParser-class.html#title" 
+          class="link">title</a>,
+          <a href="defaultParser.defaultParser-class.html#timestamp" 
+          class="link">timestamp</a>,
+          <a href="defaultParser.defaultParser-class.html#content" 
+          class="link">content</a>,
+          <a href="defaultParser.defaultParser-class.html#categories" 
+          class="link">categories</a>
+        </dd>
+      </dl>
+      <p><strong>Requires:</strong>
+        SGMLParser
+      </p>
+</div></td></tr></table>
+</div>
+<a name="clearSource"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">clearSource</span>(<span class="sig-arg">self</span>,
+        <span class="sig-arg">_source</span>)</span>
+  </h3>
+  </td><td align="right" valign="top"
+    ><span class="codelink"><a href="defaultParser-pysrc.html#defaultParser.clearSource">source&nbsp;code</a></span>&nbsp;
+    </td>
+  </tr></table>
+  
+  <p>Metoda czysci zrodlo z pojedynczych tagow HTML</p>
+  <dl class="fields">
+    <dt>Parameters:</dt>
+    <dd><ul class="nomargin-top">
+        <li><strong class="pname"><code>_source</code></strong> (string) - tekst do przetworzenia</li>
+    </ul></dd>
+    <dt>Returns: string</dt>
+        <dd>tekst bez znacznikow HTML</dd>
+  </dl>
+<div class="fields">      <p><strong>Requires:</strong>
+        re
+      </p>
+</div></td></tr></table>
+</div>
+<a name="cleanTags"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">cleanTags</span>(<span class="sig-arg">self</span>,
+        <span class="sig-arg">_source</span>)</span>
+  </h3>
+  </td><td align="right" valign="top"
+    ><span class="codelink"><a href="defaultParser-pysrc.html#defaultParser.cleanTags">source&nbsp;code</a></span>&nbsp;
+    </td>
+  </tr></table>
+  
+  <p>Alternatywna metoda czyszczaca zrodlo z tagow HTML</p>
+  <dl class="fields">
+    <dt>Parameters:</dt>
+    <dd><ul class="nomargin-top">
+        <li><strong class="pname"><code>_source</code></strong> (string) - tekst do przetworzenia</li>
+    </ul></dd>
+    <dt>Returns: string</dt>
+        <dd>tekst bez znacznikow HTML</dd>
+  </dl>
+<div class="fields">      <p><strong>Requires:</strong>
+        re
+      </p>
+</div></td></tr></table>
+</div>
+<a name="getId"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">getId</span>(<span class="sig-arg">self</span>)</span>
+  </h3>
+  </td><td align="right" valign="top"
+    ><span class="codelink"><a href="defaultParser-pysrc.html#defaultParser.getId">source&nbsp;code</a></span>&nbsp;
+    </td>
+  </tr></table>
+  
+  <p>Metoda zwracajaca id obiektu</p>
+  <dl class="fields">
+    <dt>Returns: string</dt>
+        <dd>id obiektu</dd>
+  </dl>
+<div class="fields">      <p><strong>See Also:</strong>
+        <a href="defaultParser.defaultParser-class.html#id" 
+        class="link">id</a>
+      </p>
+</div></td></tr></table>
+</div>
+<a name="handle_data"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">handle_data</span>(<span class="sig-arg">self</span>,
+        <span class="sig-arg">data</span>)</span>
+  </h3>
+  </td><td align="right" valign="top"
+    ><span class="codelink"><a href="defaultParser-pysrc.html#defaultParser.handle_data">source&nbsp;code</a></span>&nbsp;
+    </td>
+  </tr></table>
+  
+  <p>Metoda przchwytujaca aktualnie przetwarzany tekst. Tekst jest dodawany
+  do odpowienich list.</p>
+  <dl class="fields">
+    <dt>Parameters:</dt>
+    <dd><ul class="nomargin-top">
+        <li><strong class="pname"><code>data</code></strong> - dane do przetworzenia</li>
+        <li><strong class="pname"><code>data</code></strong> - string</li>
+    </ul></dd>
+    <dt>Overrides:
+        sgmllib.SGMLParser.handle_data
+    </dt>
+  </dl>
+<div class="fields">      <dl><dt>See Also:</dt>
+        <dd>
+          <a href="defaultParser.defaultParser-class.html#data" 
+          class="link">data</a>,
+          <a href="defaultParser.defaultParser-class.html#data_url" 
+          class="link">data_url</a>
+        </dd>
+      </dl>
+</div></td></tr></table>
+</div>
+<a name="start_a"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">start_a</span>(<span class="sig-arg">self</span>,
+        <span class="sig-arg">attrs</span>)</span>
+  </h3>
+  </td><td align="right" valign="top"
+    ><span class="codelink"><a href="defaultParser-pysrc.html#defaultParser.start_a">source&nbsp;code</a></span>&nbsp;
+    </td>
+  </tr></table>
+  
+  <p>Metoda wywolywana przy napotkaniu na znacznik &lt;a&gt;. Jej zadaniem 
+  jest dopisanie do listy przechwyconego adresu (z parametru href).</p>
+  <dl class="fields">
+    <dt>Parameters:</dt>
+    <dd><ul class="nomargin-top">
+        <li><strong class="pname"><code>attrs</code></strong> (list of tuples of strings) - lista parametrow znacznika</li>
+    </ul></dd>
+  </dl>
+<div class="fields">      <dl><dt>See Also:</dt>
+        <dd>
+          <a href="defaultParser.defaultParser-class.html#urls" 
+          class="link">urls</a>,
+          <a href="defaultParser.defaultParser-class.html#data_url" 
+          class="link">data_url</a>
+        </dd>
+      </dl>
+</div></td></tr></table>
+</div>
+<a name="end_a"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">end_a</span>(<span class="sig-arg">self</span>)</span>
+  </h3>
+  </td><td align="right" valign="top"
+    ><span class="codelink"><a href="defaultParser-pysrc.html#defaultParser.end_a">source&nbsp;code</a></span>&nbsp;
+    </td>
+  </tr></table>
+  
+  <p>Metoda wywolywana przy napotkaniu na znacznik &lt;/a&gt;. Jej zadaniem
+  jest dopisanie do listy przechwyconej nazwy linku (&lt;a 
+  ...&gt;Nazwa&lt;/a&gt;).</p>
+  <dl class="fields">
+  </dl>
+<div class="fields">      <dl><dt>See Also:</dt>
+        <dd>
+          <a href="defaultParser.defaultParser-class.html#urls" 
+          class="link">urls</a>,
+          <a href="defaultParser.defaultParser-class.html#addrs" 
+          class="link">addrs</a>,
+          <a href="defaultParser.defaultParser-class.html#data_url" 
+          class="link">data_url</a>
+        </dd>
+      </dl>
+      <p><strong>Requires:</strong>
+        string
+      </p>
+</div></td></tr></table>
+</div>
+<a name="getAddrE"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">getAddrE</span>(<span class="sig-arg">self</span>)</span>
+  </h3>
+  </td><td align="right" valign="top"
+    ><span class="codelink"><a href="defaultParser-pysrc.html#defaultParser.getAddrE">source&nbsp;code</a></span>&nbsp;
+    </td>
+  </tr></table>
+  
+  <p>Metoda zwraca wzorzec adresu</p>
+  <dl class="fields">
+    <dt>Returns: string</dt>
+        <dd>wzorzec adresu</dd>
+  </dl>
+<div class="fields">      <p><strong>See Also:</strong>
+        <a href="defaultParser.defaultParser-class.html#addr" 
+        class="link">addr</a>
+      </p>
+</div></td></tr></table>
+</div>
+<a name="getAddr"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">getAddr</span>(<span class="sig-arg">self</span>,
+        <span class="sig-arg">_day</span>,
+        <span class="sig-arg">_month</span>,
+        <span class="sig-arg">_year</span>)</span>
+  </h3>
+  </td><td align="right" valign="top"
+    ><span class="codelink"><a href="defaultParser-pysrc.html#defaultParser.getAddr">source&nbsp;code</a></span>&nbsp;
+    </td>
+  </tr></table>
+  
+  <p>Metoda zwraca przetworzony adres URL strony archiwum. Parametrami jest
+  data na podstawie, ktorej bedzie wygenerowany adres URL.</p>
+  <dl class="fields">
+    <dt>Parameters:</dt>
+    <dd><ul class="nomargin-top">
+        <li><strong class="pname"><code>_day</code></strong> (string) - dzien (regex: [0-3][0-9])</li>
+        <li><strong class="pname"><code>_month</code></strong> (string) - miesiac (regex: [0-1][0-9])</li>
+        <li><strong class="pname"><code>_year</code></strong> (string) - rok (regex: [0-9]{4})</li>
+    </ul></dd>
+    <dt>Returns: string</dt>
+        <dd>wygenerowany adres URL</dd>
+  </dl>
+</td></tr></table>
+</div>
+<a name="getAddrList"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">getAddrList</span>(<span class="sig-arg">self</span>)</span>
+  </h3>
+  </td><td align="right" valign="top"
+    ><span class="codelink"><a href="defaultParser-pysrc.html#defaultParser.getAddrList">source&nbsp;code</a></span>&nbsp;
+    </td>
+  </tr></table>
+  
+  <p>Metoda zwraca liste adresow newsow. W parserze domyslnym zwracana jest
+  pusta lista.</p>
+  <dl class="fields">
+    <dt>Returns: list of strings</dt>
+        <dd>lista adresow newsow</dd>
+  </dl>
+</td></tr></table>
+</div>
+<a name="parsePageSource"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">parsePageSource</span>(<span class="sig-arg">self</span>,
+        <span class="sig-arg">_url</span>)</span>
+  </h3>
+  </td><td align="right" valign="top"
+    ><span class="codelink"><a href="defaultParser-pysrc.html#defaultParser.parsePageSource">source&nbsp;code</a></span>&nbsp;
+    </td>
+  </tr></table>
+  
+  <p>Metoda sluzacza do parsowania strony o adresie podanym w parametrze. 
+  Algorytm dzialania:</p>
+  <ol start="1">
+    <li>
+      Tworzony jest obiekt typu socket
+    </li>
+    <li>
+      Pobierane jest zrodlo strony o adresie przekazanym w parametrze
+      <ul>
+        <li>
+          w razie bledu nastepuje wyjscie z metody
+        </li>
+      </ul>
+    </li>
+    <li>
+      Zrodlo jest czyszczone z pojedynczych tagow
+    </li>
+    <li>
+      Zrodlo jest parsowane
+    </li>
+    <li>
+      Tekst wynikowy jest czyszczony ze znacznikow HTML
+    </li>
+  </ol>
+  <dl class="fields">
+    <dt>Parameters:</dt>
+    <dd><ul class="nomargin-top">
+        <li><strong class="pname"><code>_url</code></strong> (string) - adres URL strony</li>
+    </ul></dd>
+  </dl>
+<div class="fields">      <p><strong>Requires:</strong>
+        urllib
+      </p>
+      <dl><dt>See Also:</dt>
+        <dd>
+          <a href="defaultParser.defaultParser-class.html#clearSource" 
+          class="link">clearSource</a>,
+          <a href="defaultParser.defaultParser-class.html#cleanTags" 
+          class="link">cleanTags</a>
+        </dd>
+      </dl>
+</div></td></tr></table>
+</div>
+<br />
+<!-- ==================== NAVIGATION BAR ==================== -->
+<table class="navbar" border="0" width="100%" cellpadding="0"
+       bgcolor="#a0c0ff" cellspacing="0">
+  <tr valign="middle">
+
+  <!-- Tree link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="module-tree.html">Trees</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Index link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="identifier-index.html">Indices</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Help link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="help.html">Help</a>&nbsp;&nbsp;&nbsp;</th>
+
+      <th class="navbar" width="100%"></th>
+  </tr>
+</table>
+<table border="0" cellpadding="0" cellspacing="0" width="100%%">
+  <tr>
+    <td align="left" class="footer">
+    Generated by Epydoc 3.0.1 on Thu Aug 30 14:19:32 2012
+    </td>
+    <td align="right" class="footer">
+      <a target="mainFrame" href="http://epydoc.sourceforge.net"
+        >http://epydoc.sourceforge.net</a>
+    </td>
+  </tr>
+</table>
+
+<script type="text/javascript">
+  <!--
+  // Private objects are initially displayed (because if
+  // javascript is turned off then we want them to be
+  // visible); but by default, we want to hide them.  So hide
+  // them unless we have a cookie that says to show them.
+  checkCookie();
+  // -->
+</script>
+</body>
+</html>

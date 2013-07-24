@@ -1,0 +1,629 @@
+<?xml version="1.0" encoding="ascii"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+          "DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+  <title>YahooCompaniesParserThread.YahooCompaniesParserThread</title>
+  <link rel="stylesheet" href="epydoc.css" type="text/css" />
+  <script type="text/javascript" src="epydoc.js"></script>
+</head>
+
+<body bgcolor="white" text="black" link="blue" vlink="#204080"
+      alink="#204080">
+<!-- ==================== NAVIGATION BAR ==================== -->
+<table class="navbar" border="0" width="100%" cellpadding="0"
+       bgcolor="#a0c0ff" cellspacing="0">
+  <tr valign="middle">
+
+  <!-- Tree link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="module-tree.html">Trees</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Index link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="identifier-index.html">Indices</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Help link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="help.html">Help</a>&nbsp;&nbsp;&nbsp;</th>
+
+      <th class="navbar" width="100%"></th>
+  </tr>
+</table>
+<table width="100%" cellpadding="0" cellspacing="0">
+  <tr valign="top">
+    <td width="100%">
+      <span class="breadcrumbs">
+        <a href="YahooCompaniesParserThread-module.html">Module&nbsp;YahooCompaniesParserThread</a> ::
+        Class&nbsp;YahooCompaniesParserThread
+      </span>
+    </td>
+    <td>
+      <table cellpadding="0" cellspacing="0">
+        <!-- hide/show private -->
+        <tr><td align="right"><span class="options">[<a href="javascript:void(0);" class="privatelink"
+    onclick="toggle_private();">hide&nbsp;private</a>]</span></td></tr>
+        <tr><td align="right"><span class="options"
+            >[<a href="frames.html" target="_top">frames</a
+            >]&nbsp;|&nbsp;<a href="YahooCompaniesParserThread.YahooCompaniesParserThread-class.html"
+            target="_top">no&nbsp;frames</a>]</span></td></tr>
+      </table>
+    </td>
+  </tr>
+</table>
+<!-- ==================== CLASS DESCRIPTION ==================== -->
+<h1 class="epydoc">Class YahooCompaniesParserThread</h1><p class="nomargin-top"><span class="codelink"><a href="YahooCompaniesParserThread-pysrc.html#YahooCompaniesParserThread">source&nbsp;code</a></span></p>
+<pre class="base-tree">
+        object --+        
+                 |        
+threading._Verbose --+    
+                     |    
+      threading.Thread --+
+                         |
+                        <strong class="uidshort">YahooCompaniesParserThread</strong>
+</pre>
+
+<hr />
+<p>Klasa tworzaca obiekty parserow do przetwarzania danych o spolkach 
+  oraz watki dla nich</p>
+
+<hr />
+<div class="fields">      <strong>Requires:</strong>
+      <ul class="nomargin-top">
+        <li>
+        time
+        </li>
+        <li>
+        threading
+        </li>
+        <li>
+        <a href="companyStruct.companyStruct-class.html" 
+        class="link">companyStruct</a>
+        </li>
+        <li>
+        <a href="YahooCompaniesParser-module.html" 
+        class="link">YahooCompaniesParser</a>
+        </li>
+        <li>
+        <a href="YahooCompaniesHoldersParser-module.html" 
+        class="link">YahooCompaniesHoldersParser</a>
+        </li>
+        <li>
+        <a href="databaseConn-module.html" class="link">databaseConn</a>
+        </li>
+        <li>
+        <a href="crawlerGui-module.html" class="link">crawlerGui</a>
+        </li>
+      </ul>
+      <dl><dt>See Also:</dt>
+        <dd>
+          <a href="companyStruct.companyStruct-class.html" 
+          class="link">companyStruct.companyStruct</a>,
+          <a href="YahooCompaniesParser.YahooCompaniesParser-class.html" 
+          class="link">YahooCompaniesParser.YahooCompaniesParser</a>,
+          <a 
+          href="YahooCompaniesHoldersParser.YahooCompaniesHoldersParser-class.html"
+          
+          class="link">YahooCompaniesHoldersParser.YahooCompaniesHoldersParser</a>,
+          <a href="databaseConn.databaseConn-class.html" 
+          class="link">databaseConn.databaseConn</a>,
+          <a href="crawlerGui.crawlerGui-class.html" 
+          class="link">crawlerGui.crawlerGui</a>
+        </dd>
+      </dl>
+</div><!-- ==================== INSTANCE METHODS ==================== -->
+<a name="section-InstanceMethods"></a>
+<table class="summary" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr bgcolor="#70b0f0" class="table-header">
+  <td colspan="2" class="table-header">
+    <table border="0" cellpadding="0" cellspacing="0" width="100%">
+      <tr valign="top">
+        <td align="left"><span class="table-header">Instance Methods</span></td>
+        <td align="right" valign="top"
+         ><span class="options">[<a href="#section-InstanceMethods"
+         class="privatelink" onclick="toggle_private();"
+         >hide private</a>]</span></td>
+      </tr>
+    </table>
+  </td>
+</tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="YahooCompaniesParserThread.YahooCompaniesParserThread-class.html#__init__" class="summary-sig-name">__init__</a>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">_threadType</span>,
+        <span class="summary-sig-arg">_fileHnd</span>,
+        <span class="summary-sig-arg">_parserC</span>,
+        <span class="summary-sig-arg">_parserH</span>,
+        <span class="summary-sig-arg">_company</span>,
+        <span class="summary-sig-arg">_i</span>,
+        <span class="summary-sig-arg">_n</span>,
+        <span class="summary-sig-arg">_ui</span>=<span class="summary-sig-default">None</span>,
+        <span class="summary-sig-arg">_db</span>=<span class="summary-sig-default">-1</span>)</span><br />
+      Konstruktor klasy.</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="YahooCompaniesParserThread-pysrc.html#YahooCompaniesParserThread.__init__">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="YahooCompaniesParserThread.YahooCompaniesParserThread-class.html#run" class="summary-sig-name">run</a>(<span class="summary-sig-arg">self</span>)</span><br />
+      Glowna funkcja watku.</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="YahooCompaniesParserThread-pysrc.html#YahooCompaniesParserThread.run">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="YahooCompaniesParserThread.YahooCompaniesParserThread-class.html#getCompany" class="summary-sig-name">getCompany</a>(<span class="summary-sig-arg">self</span>)</span><br />
+      Metoda pobierajaca dane o spolce z obiektow parserow.</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="YahooCompaniesParserThread-pysrc.html#YahooCompaniesParserThread.getCompany">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+  <tr>
+    <td colspan="2" class="summary">
+    <p class="indent-wrapped-lines"><b>Inherited from <code>threading.Thread</code></b>:
+      <code>__repr__</code>,
+      <code>getName</code>,
+      <code>isAlive</code>,
+      <code>isDaemon</code>,
+      <code>is_alive</code>,
+      <code>join</code>,
+      <code>setDaemon</code>,
+      <code>setName</code>,
+      <code>start</code>
+      </p>
+    <div class="private">    <p class="indent-wrapped-lines"><b>Inherited from <code>threading.Thread</code></b> (private):
+      <code>_reset_internal_locks</code>,
+      <code>_set_daemon</code>,
+      <code>_set_ident</code>
+      </p></div>
+    <div class="private">    <p class="indent-wrapped-lines"><b>Inherited from <code>threading._Verbose</code></b> (private):
+      <code>_note</code>
+      </p></div>
+    <p class="indent-wrapped-lines"><b>Inherited from <code>object</code></b>:
+      <code>__delattr__</code>,
+      <code>__format__</code>,
+      <code>__getattribute__</code>,
+      <code>__hash__</code>,
+      <code>__new__</code>,
+      <code>__reduce__</code>,
+      <code>__reduce_ex__</code>,
+      <code>__setattr__</code>,
+      <code>__sizeof__</code>,
+      <code>__str__</code>,
+      <code>__subclasshook__</code>
+      </p>
+    </td>
+  </tr>
+</table>
+<!-- ==================== INSTANCE VARIABLES ==================== -->
+<a name="section-InstanceVariables"></a>
+<table class="summary" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr bgcolor="#70b0f0" class="table-header">
+  <td colspan="2" class="table-header">
+    <table border="0" cellpadding="0" cellspacing="0" width="100%">
+      <tr valign="top">
+        <td align="left"><span class="table-header">Instance Variables</span></td>
+        <td align="right" valign="top"
+         ><span class="options">[<a href="#section-InstanceVariables"
+         class="privatelink" onclick="toggle_private();"
+         >hide private</a>]</span></td>
+      </tr>
+    </table>
+  </td>
+</tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">string</span>
+    </td><td class="summary">
+        <a name="threadType"></a><span class="summary-name">threadType</span><br />
+      unikalne id watku
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type"><a href="crawlerGui.crawlerGui-class.html" 
+      class="link">crawlerGui.crawlerGui</a></span>
+    </td><td class="summary">
+        <a name="ui"></a><span class="summary-name">ui</span><br />
+      interface uzytkownika
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">int</span>
+    </td><td class="summary">
+        <a name="fileHnd"></a><span class="summary-name">fileHnd</span><br />
+      indeks do pliku w tablicy deskryptorow
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type"><a href="YahooCompaniesParser.YahooCompaniesParser-class.html" 
+      class="link">YahooCompaniesParser.YahooCompaniesParser</a></span>
+    </td><td class="summary">
+        <a name="parserC"></a><span class="summary-name">parserC</span><br />
+      obiekt parsera do przetwarzania podstawowych danych o spolce
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type"><a 
+      href="YahooCompaniesHoldersParser.YahooCompaniesHoldersParser-class.html"
+      
+      class="link">YahooCompaniesHoldersParser.YahooCompaniesHoldersParser</a></span>
+    </td><td class="summary">
+        <a name="parserH"></a><span class="summary-name">parserH</span><br />
+      obiekt parsera do przetwarzania danych o wlascicielach spolki
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type"><a href="companyStruct.companyStruct-class.html" 
+      class="link">companyStruct.companyStruct</a></span>
+    </td><td class="summary">
+        <a name="company"></a><span class="summary-name">company</span><br />
+      struktura danych reprezentujaca pojedyncza spolke
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type"><a href="databaseConn.databaseConn-class.html" 
+      class="link">databaseConn.databaseConn</a></span>
+    </td><td class="summary">
+        <a name="db"></a><span class="summary-name">db</span><br />
+      uchwyt na baze danych
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">int</span>
+    </td><td class="summary">
+        <a name="n"></a><span class="summary-name">n</span><br />
+      ogolna ilosc spolek do przetworzenia
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">int</span>
+    </td><td class="summary">
+        <a name="i"></a><span class="summary-name">i</span><br />
+      kolejny numer aktualnie przetwarzanaej spolki
+    </td>
+  </tr>
+</table>
+<!-- ==================== PROPERTIES ==================== -->
+<a name="section-Properties"></a>
+<table class="summary" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr bgcolor="#70b0f0" class="table-header">
+  <td colspan="2" class="table-header">
+    <table border="0" cellpadding="0" cellspacing="0" width="100%">
+      <tr valign="top">
+        <td align="left"><span class="table-header">Properties</span></td>
+        <td align="right" valign="top"
+         ><span class="options">[<a href="#section-Properties"
+         class="privatelink" onclick="toggle_private();"
+         >hide private</a>]</span></td>
+      </tr>
+    </table>
+  </td>
+</tr>
+  <tr>
+    <td colspan="2" class="summary">
+    <p class="indent-wrapped-lines"><b>Inherited from <code>threading.Thread</code></b>:
+      <code>daemon</code>,
+      <code>ident</code>,
+      <code>name</code>
+      </p>
+    <div class="private">    <p class="indent-wrapped-lines"><b>Inherited from <code>threading.Thread</code></b> (private):
+      <code>_block</code>
+      </p></div>
+    <p class="indent-wrapped-lines"><b>Inherited from <code>object</code></b>:
+      <code>__class__</code>
+      </p>
+    </td>
+  </tr>
+</table>
+<!-- ==================== METHOD DETAILS ==================== -->
+<a name="section-MethodDetails"></a>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr bgcolor="#70b0f0" class="table-header">
+  <td colspan="2" class="table-header">
+    <table border="0" cellpadding="0" cellspacing="0" width="100%">
+      <tr valign="top">
+        <td align="left"><span class="table-header">Method Details</span></td>
+        <td align="right" valign="top"
+         ><span class="options">[<a href="#section-MethodDetails"
+         class="privatelink" onclick="toggle_private();"
+         >hide private</a>]</span></td>
+      </tr>
+    </table>
+  </td>
+</tr>
+</table>
+<a name="__init__"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">__init__</span>(<span class="sig-arg">self</span>,
+        <span class="sig-arg">_threadType</span>,
+        <span class="sig-arg">_fileHnd</span>,
+        <span class="sig-arg">_parserC</span>,
+        <span class="sig-arg">_parserH</span>,
+        <span class="sig-arg">_company</span>,
+        <span class="sig-arg">_i</span>,
+        <span class="sig-arg">_n</span>,
+        <span class="sig-arg">_ui</span>=<span class="sig-default">None</span>,
+        <span class="sig-arg">_db</span>=<span class="sig-default">-1</span>)</span>
+    <br /><em class="fname">(Constructor)</em>
+  </h3>
+  </td><td align="right" valign="top"
+    ><span class="codelink"><a href="YahooCompaniesParserThread-pysrc.html#YahooCompaniesParserThread.__init__">source&nbsp;code</a></span>&nbsp;
+    </td>
+  </tr></table>
+  
+  <p>Konstruktor klasy. Inicjuje wartosci wszystkich podstawowych 
+  zmiennych</p>
+  <dl class="fields">
+    <dt>Parameters:</dt>
+    <dd><ul class="nomargin-top">
+        <li><strong class="pname"><code>_threadType</code></strong> (string) - unikalne id watku</li>
+        <li><strong class="pname"><code>_fileHnd</code></strong> (int) - indeks w tablicy deskryptorow plikow (elementu repreentujacego 
+          plik do zapisu danych) - ignorowane gdy przekazany jest uchwyt do
+          bazy</li>
+        <li><strong class="pname"><code>_parserC</code></strong> (<a href="YahooCompaniesParser.YahooCompaniesParser-class.html" 
+          class="link">YahooCompaniesParser.YahooCompaniesParser</a>) - obiekt parsera do przetwarzania podstawowych danych o spolce</li>
+        <li><strong class="pname"><code>_parserH</code></strong> (<a 
+          href="YahooCompaniesHoldersParser.YahooCompaniesHoldersParser-class.html"
+          
+          class="link">YahooCompaniesHoldersParser.YahooCompaniesHoldersParser</a>) - obiekt parsera do przetwarzania danych o wlascicielach spolek</li>
+        <li><strong class="pname"><code>_company</code></strong> (<a href="companyStruct.companyStruct-class.html" 
+          class="link">companyStruct.companyStruct</a>) - struktura danych reprezentujaca aktualnie przetwarzana spolke</li>
+        <li><strong class="pname"><code>_i</code></strong> (int) - numer aktualnie przetwarzanej spolki</li>
+        <li><strong class="pname"><code>_n</code></strong> (int) - ogolna ilosc spolek do przetworzenia</li>
+        <li><strong class="pname"><code>_ui</code></strong> (<a href="crawlerGui.crawlerGui-class.html" 
+          class="link">crawlerGui.crawlerGui</a>) - interface uzytkownika</li>
+        <li><strong class="pname"><code>_db</code></strong> (<a href="databaseConn.databaseConn-class.html" 
+          class="link">databaseConn.databaseConn</a>) - uchwyt na baze danych</li>
+    </ul></dd>
+    <dt>Overrides:
+        object.__init__
+    </dt>
+  </dl>
+<div class="fields">      <strong>Requires:</strong>
+      <ul class="nomargin-top">
+        <li>
+        threading.Thread
+        </li>
+        <li>
+        <a href="crawlerGui.crawlerGui-class.html" 
+        class="link">crawlerGui.crawlerGui</a>
+        </li>
+        <li>
+        <a 
+        href="YahooCompaniesHoldersParser.YahooCompaniesHoldersParser-class.html"
+        
+        class="link">YahooCompaniesHoldersParser.YahooCompaniesHoldersParser</a>
+        </li>
+        <li>
+        <a href="YahooCompaniesParser.YahooCompaniesParser-class.html" 
+        class="link">YahooCompaniesParser.YahooCompaniesParser</a>
+        </li>
+        <li>
+        <a href="databaseConn.databaseConn-class.html" 
+        class="link">databaseConn.databaseConn</a>
+        </li>
+        <li>
+        <a href="companyStruct.companyStruct-class.html" 
+        class="link">companyStruct.companyStruct</a>
+        </li>
+      </ul>
+      <dl><dt>See Also:</dt>
+        <dd>
+          <a 
+          href="YahooCompaniesParserThread.YahooCompaniesParserThread-class.html#threadType"
+          class="link">threadType</a>,
+          <a 
+          href="YahooCompaniesParserThread.YahooCompaniesParserThread-class.html#ui"
+          class="link">ui</a>,
+          <a 
+          href="YahooCompaniesParserThread.YahooCompaniesParserThread-class.html#fileHnd"
+          class="link">fileHnd</a>,
+          <a 
+          href="YahooCompaniesParserThread.YahooCompaniesParserThread-class.html#parserC"
+          class="link">parserC</a>,
+          <a 
+          href="YahooCompaniesParserThread.YahooCompaniesParserThread-class.html#parserH"
+          class="link">parserH</a>,
+          <a 
+          href="YahooCompaniesParserThread.YahooCompaniesParserThread-class.html#company"
+          class="link">company</a>,
+          <a 
+          href="YahooCompaniesParserThread.YahooCompaniesParserThread-class.html#db"
+          class="link">db</a>,
+          <a 
+          href="YahooCompaniesParserThread.YahooCompaniesParserThread-class.html#n"
+          class="link">n</a>,
+          <a 
+          href="YahooCompaniesParserThread.YahooCompaniesParserThread-class.html#i"
+          class="link">i</a>
+        </dd>
+      </dl>
+</div></td></tr></table>
+</div>
+<a name="run"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">run</span>(<span class="sig-arg">self</span>)</span>
+  </h3>
+  </td><td align="right" valign="top"
+    ><span class="codelink"><a href="YahooCompaniesParserThread-pysrc.html#YahooCompaniesParserThread.run">source&nbsp;code</a></span>&nbsp;
+    </td>
+  </tr></table>
+  
+  <p>Glowna funkcja watku. Sluzy do pobrania oraz zapisania danych (do 
+  pliku badz bazy) dotyczacych spolki.</p>
+  <dl class="fields">
+    <dt>Overrides:
+        threading.Thread.run
+    </dt>
+  </dl>
+<div class="fields">      <dl><dt>See Also:</dt>
+        <dd>
+          <a 
+          href="YahooCompaniesParserThread.YahooCompaniesParserThread-class.html#getCompany"
+          class="link">getCompany</a>,
+          <a 
+          href="YahooCompaniesParserThread.YahooCompaniesParserThread-class.html#company"
+          class="link">company</a>,
+          <a 
+          href="YahooCompaniesParserThread.YahooCompaniesParserThread-class.html#parserC"
+          class="link">parserC</a>,
+          <a 
+          href="YahooCompaniesParserThread.YahooCompaniesParserThread-class.html#fileHnd"
+          class="link">fileHnd</a>,
+          <a 
+          href="YahooCompaniesParserThread.YahooCompaniesParserThread-class.html#ui"
+          class="link">ui</a>,
+          <a 
+          href="YahooCompaniesParserThread.YahooCompaniesParserThread-class.html#i"
+          class="link">i</a>,
+          <a 
+          href="YahooCompaniesParserThread.YahooCompaniesParserThread-class.html#n"
+          class="link">n</a>
+        </dd>
+      </dl>
+      <strong>Requires:</strong>
+      <ul class="nomargin-top">
+        <li>
+        <a href="YahooCompaniesParser-module.html" 
+        class="link">YahooCompaniesParser</a>
+        </li>
+        <li>
+        <a href="crawlerGui.crawlerGui-class.html" 
+        class="link">crawlerGui.crawlerGui</a>
+        </li>
+      </ul>
+</div></td></tr></table>
+</div>
+<a name="getCompany"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">getCompany</span>(<span class="sig-arg">self</span>)</span>
+  </h3>
+  </td><td align="right" valign="top"
+    ><span class="codelink"><a href="YahooCompaniesParserThread-pysrc.html#YahooCompaniesParserThread.getCompany">source&nbsp;code</a></span>&nbsp;
+    </td>
+  </tr></table>
+  
+  <p>Metoda pobierajaca dane o spolce z obiektow parserow.</p>
+  <dl class="fields">
+  </dl>
+<div class="fields">      <p><strong>Requires:</strong>
+        <a href="companyStruct.companyStruct-class.html" 
+        class="link">companyStruct.companyStruct</a>
+      </p>
+      <dl><dt>See Also:</dt>
+        <dd>
+          <a href="companyStruct.companyStruct-class.html" 
+          class="link">companyStruct.companyStruct</a>,
+          <a 
+          href="YahooCompaniesParserThread.YahooCompaniesParserThread-class.html#company"
+          class="link">company</a>,
+          <a 
+          href="YahooCompaniesParserThread.YahooCompaniesParserThread-class.html#parserH"
+          class="link">parserH</a>,
+          <a 
+          href="YahooCompaniesParserThread.YahooCompaniesParserThread-class.html#parserC"
+          class="link">parserC</a>
+        </dd>
+      </dl>
+</div></td></tr></table>
+</div>
+<br />
+<!-- ==================== NAVIGATION BAR ==================== -->
+<table class="navbar" border="0" width="100%" cellpadding="0"
+       bgcolor="#a0c0ff" cellspacing="0">
+  <tr valign="middle">
+
+  <!-- Tree link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="module-tree.html">Trees</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Index link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="identifier-index.html">Indices</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Help link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="help.html">Help</a>&nbsp;&nbsp;&nbsp;</th>
+
+      <th class="navbar" width="100%"></th>
+  </tr>
+</table>
+<table border="0" cellpadding="0" cellspacing="0" width="100%%">
+  <tr>
+    <td align="left" class="footer">
+    Generated by Epydoc 3.0.1 on Thu Aug 30 14:19:31 2012
+    </td>
+    <td align="right" class="footer">
+      <a target="mainFrame" href="http://epydoc.sourceforge.net"
+        >http://epydoc.sourceforge.net</a>
+    </td>
+  </tr>
+</table>
+
+<script type="text/javascript">
+  <!--
+  // Private objects are initially displayed (because if
+  // javascript is turned off then we want them to be
+  // visible); but by default, we want to hide them.  So hide
+  // them unless we have a cookie that says to show them.
+  checkCookie();
+  // -->
+</script>
+</body>
+</html>

@@ -1,0 +1,291 @@
+<?xml version="1.0" encoding="ascii"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+          "DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+  <title>YahooCompaniesParserThread</title>
+  <link rel="stylesheet" href="epydoc.css" type="text/css" />
+  <script type="text/javascript" src="epydoc.js"></script>
+</head>
+
+<body bgcolor="white" text="black" link="blue" vlink="#204080"
+      alink="#204080">
+<!-- ==================== NAVIGATION BAR ==================== -->
+<table class="navbar" border="0" width="100%" cellpadding="0"
+       bgcolor="#a0c0ff" cellspacing="0">
+  <tr valign="middle">
+
+  <!-- Tree link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="module-tree.html">Trees</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Index link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="identifier-index.html">Indices</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Help link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="help.html">Help</a>&nbsp;&nbsp;&nbsp;</th>
+
+      <th class="navbar" width="100%"></th>
+  </tr>
+</table>
+<table width="100%" cellpadding="0" cellspacing="0">
+  <tr valign="top">
+    <td width="100%">
+      <span class="breadcrumbs">
+        Module&nbsp;YahooCompaniesParserThread
+      </span>
+    </td>
+    <td>
+      <table cellpadding="0" cellspacing="0">
+        <!-- hide/show private -->
+        <tr><td align="right"><span class="options">[<a href="javascript:void(0);" class="privatelink"
+    onclick="toggle_private();">hide&nbsp;private</a>]</span></td></tr>
+        <tr><td align="right"><span class="options"
+            >[<a href="frames.html" target="_top">frames</a
+            >]&nbsp;|&nbsp;<a href="YahooCompaniesParserThread-pysrc.html"
+            target="_top">no&nbsp;frames</a>]</span></td></tr>
+      </table>
+    </td>
+  </tr>
+</table>
+<h1 class="epydoc">Source Code for <a href="YahooCompaniesParserThread-module.html">Module YahooCompaniesParserThread</a></h1>
+<pre class="py-src">
+<a name="L1"></a><tt class="py-lineno">  1</tt>  <tt class="py-line"><tt class="py-docstring">'''</tt> </tt>
+<a name="L2"></a><tt class="py-lineno">  2</tt>  <tt class="py-line"><tt class="py-docstring">Klasa tworzaca obiekty parserow do przetwarzania danych o spolkach oraz watki dla nich</tt> </tt>
+<a name="L3"></a><tt class="py-lineno">  3</tt>  <tt class="py-line"><tt class="py-docstring"></tt> </tt>
+<a name="L4"></a><tt class="py-lineno">  4</tt>  <tt class="py-line"><tt class="py-docstring">@author: pogoma</tt> </tt>
+<a name="L5"></a><tt class="py-lineno">  5</tt>  <tt class="py-line"><tt class="py-docstring">@requires: time</tt> </tt>
+<a name="L6"></a><tt class="py-lineno">  6</tt>  <tt class="py-line"><tt class="py-docstring">@requires: threading</tt> </tt>
+<a name="L7"></a><tt class="py-lineno">  7</tt>  <tt class="py-line"><tt class="py-docstring">@requires: L{companyStruct}</tt> </tt>
+<a name="L8"></a><tt class="py-lineno">  8</tt>  <tt class="py-line"><tt class="py-docstring">@requires: L{YahooCompaniesParser}</tt> </tt>
+<a name="L9"></a><tt class="py-lineno">  9</tt>  <tt class="py-line"><tt class="py-docstring">@requires: L{YahooCompaniesHoldersParser}</tt> </tt>
+<a name="L10"></a><tt class="py-lineno"> 10</tt>  <tt class="py-line"><tt class="py-docstring">@requires: L{databaseConn}</tt> </tt>
+<a name="L11"></a><tt class="py-lineno"> 11</tt>  <tt class="py-line"><tt class="py-docstring">@requires: L{crawlerGui}</tt> </tt>
+<a name="L12"></a><tt class="py-lineno"> 12</tt>  <tt class="py-line"><tt class="py-docstring">@see: L{companyStruct.companyStruct}</tt> </tt>
+<a name="L13"></a><tt class="py-lineno"> 13</tt>  <tt class="py-line"><tt class="py-docstring">@see: L{YahooCompaniesParser.YahooCompaniesParser}</tt> </tt>
+<a name="L14"></a><tt class="py-lineno"> 14</tt>  <tt class="py-line"><tt class="py-docstring">@see: L{YahooCompaniesHoldersParser.YahooCompaniesHoldersParser}</tt> </tt>
+<a name="L15"></a><tt class="py-lineno"> 15</tt>  <tt class="py-line"><tt class="py-docstring">@see: L{databaseConn.databaseConn}</tt> </tt>
+<a name="L16"></a><tt class="py-lineno"> 16</tt>  <tt class="py-line"><tt class="py-docstring">@see: L{crawlerGui.crawlerGui}</tt> </tt>
+<a name="L17"></a><tt class="py-lineno"> 17</tt>  <tt class="py-line"><tt class="py-docstring">'''</tt> </tt>
+<a name="L18"></a><tt class="py-lineno"> 18</tt>  <tt class="py-line"> </tt>
+<a name="L19"></a><tt class="py-lineno"> 19</tt>  <tt class="py-line"><tt class="py-keyword">import</tt> <tt class="py-name">time</tt> </tt>
+<a name="L20"></a><tt class="py-lineno"> 20</tt>  <tt class="py-line"><tt class="py-keyword">import</tt> <tt class="py-name">threading</tt> </tt>
+<a name="L21"></a><tt class="py-lineno"> 21</tt>  <tt class="py-line"><tt class="py-keyword">from</tt> <tt id="link-0" class="py-name" targets="Module companyStruct=companyStruct-module.html,Class companyStruct.companyStruct=companyStruct.companyStruct-class.html"><a title="companyStruct
+companyStruct.companyStruct" class="py-name" href="#" onclick="return doclink('link-0', 'companyStruct', 'link-0');">companyStruct</a></tt> <tt class="py-keyword">import</tt> <tt id="link-1" class="py-name"><a title="companyStruct
+companyStruct.companyStruct" class="py-name" href="#" onclick="return doclink('link-1', 'companyStruct', 'link-0');">companyStruct</a></tt> </tt>
+<a name="L22"></a><tt class="py-lineno"> 22</tt>  <tt class="py-line"> </tt>
+<a name="YahooCompaniesParserThread"></a><div id="YahooCompaniesParserThread-def"><a name="L23"></a><tt class="py-lineno"> 23</tt> <a class="py-toggle" href="#" id="YahooCompaniesParserThread-toggle" onclick="return toggle('YahooCompaniesParserThread');">-</a><tt class="py-line"><tt class="py-keyword">class</tt> <a class="py-def-name" href="YahooCompaniesParserThread.YahooCompaniesParserThread-class.html">YahooCompaniesParserThread</a><tt class="py-op">(</tt> <tt class="py-base-class">threading</tt><tt class="py-op">.</tt><tt class="py-base-class">Thread</tt> <tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="YahooCompaniesParserThread-collapsed" style="display:none;" pad="+++" indent="++++"></div><div id="YahooCompaniesParserThread-expanded"><a name="L24"></a><tt class="py-lineno"> 24</tt>  <tt class="py-line">  <tt class="py-docstring">u"""</tt> </tt>
+<a name="L25"></a><tt class="py-lineno"> 25</tt>  <tt class="py-line"><tt class="py-docstring">  Klasa tworzaca obiekty parserow do przetwarzania danych o spolkach oraz watki dla nich</tt> </tt>
+<a name="L26"></a><tt class="py-lineno"> 26</tt>  <tt class="py-line"><tt class="py-docstring">  @requires: time</tt> </tt>
+<a name="L27"></a><tt class="py-lineno"> 27</tt>  <tt class="py-line"><tt class="py-docstring">  @requires: threading</tt> </tt>
+<a name="L28"></a><tt class="py-lineno"> 28</tt>  <tt class="py-line"><tt class="py-docstring">  @requires: L{companyStruct}</tt> </tt>
+<a name="L29"></a><tt class="py-lineno"> 29</tt>  <tt class="py-line"><tt class="py-docstring">  @requires: L{YahooCompaniesParser}</tt> </tt>
+<a name="L30"></a><tt class="py-lineno"> 30</tt>  <tt class="py-line"><tt class="py-docstring">  @requires: L{YahooCompaniesHoldersParser}</tt> </tt>
+<a name="L31"></a><tt class="py-lineno"> 31</tt>  <tt class="py-line"><tt class="py-docstring">  @requires: L{databaseConn}</tt> </tt>
+<a name="L32"></a><tt class="py-lineno"> 32</tt>  <tt class="py-line"><tt class="py-docstring">  @requires: L{crawlerGui}</tt> </tt>
+<a name="L33"></a><tt class="py-lineno"> 33</tt>  <tt class="py-line"><tt class="py-docstring">  @see: L{companyStruct.companyStruct}</tt> </tt>
+<a name="L34"></a><tt class="py-lineno"> 34</tt>  <tt class="py-line"><tt class="py-docstring">  @see: L{YahooCompaniesParser.YahooCompaniesParser}</tt> </tt>
+<a name="L35"></a><tt class="py-lineno"> 35</tt>  <tt class="py-line"><tt class="py-docstring">  @see: L{YahooCompaniesHoldersParser.YahooCompaniesHoldersParser}</tt> </tt>
+<a name="L36"></a><tt class="py-lineno"> 36</tt>  <tt class="py-line"><tt class="py-docstring">  @see: L{databaseConn.databaseConn}</tt> </tt>
+<a name="L37"></a><tt class="py-lineno"> 37</tt>  <tt class="py-line"><tt class="py-docstring">  @see: L{crawlerGui.crawlerGui}</tt> </tt>
+<a name="L38"></a><tt class="py-lineno"> 38</tt>  <tt class="py-line"><tt class="py-docstring">  """</tt> </tt>
+<a name="YahooCompaniesParserThread.__init__"></a><div id="YahooCompaniesParserThread.__init__-def"><a name="L39"></a><tt class="py-lineno"> 39</tt> <a class="py-toggle" href="#" id="YahooCompaniesParserThread.__init__-toggle" onclick="return toggle('YahooCompaniesParserThread.__init__');">-</a><tt class="py-line">  <tt class="py-keyword">def</tt> <a class="py-def-name" href="YahooCompaniesParserThread.YahooCompaniesParserThread-class.html#__init__">__init__</a><tt class="py-op">(</tt> <tt class="py-param">self</tt><tt class="py-op">,</tt> <tt class="py-param">_threadType</tt><tt class="py-op">,</tt> <tt class="py-param">_fileHnd</tt><tt class="py-op">,</tt> <tt class="py-param">_parserC</tt><tt class="py-op">,</tt> <tt class="py-param">_parserH</tt><tt class="py-op">,</tt> <tt class="py-param">_company</tt><tt class="py-op">,</tt> <tt class="py-param">_i</tt><tt class="py-op">,</tt> <tt class="py-param">_n</tt><tt class="py-op">,</tt> <tt class="py-param">_ui</tt> <tt class="py-op">=</tt> <tt class="py-name">None</tt><tt class="py-op">,</tt> <tt class="py-param">_db</tt> <tt class="py-op">=</tt> <tt class="py-op">-</tt><tt class="py-number">1</tt> <tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="YahooCompaniesParserThread.__init__-collapsed" style="display:none;" pad="+++" indent="++++++"></div><div id="YahooCompaniesParserThread.__init__-expanded"><a name="L40"></a><tt class="py-lineno"> 40</tt>  <tt class="py-line">    <tt class="py-docstring">u"""</tt> </tt>
+<a name="L41"></a><tt class="py-lineno"> 41</tt>  <tt class="py-line"><tt class="py-docstring">    Konstruktor klasy. Inicjuje wartosci wszystkich podstawowych zmiennych</tt> </tt>
+<a name="L42"></a><tt class="py-lineno"> 42</tt>  <tt class="py-line"><tt class="py-docstring">    @requires: threading.Thread</tt> </tt>
+<a name="L43"></a><tt class="py-lineno"> 43</tt>  <tt class="py-line"><tt class="py-docstring">    @requires: L{crawlerGui.crawlerGui}</tt> </tt>
+<a name="L44"></a><tt class="py-lineno"> 44</tt>  <tt class="py-line"><tt class="py-docstring">    @requires: L{YahooCompaniesHoldersParser.YahooCompaniesHoldersParser}</tt> </tt>
+<a name="L45"></a><tt class="py-lineno"> 45</tt>  <tt class="py-line"><tt class="py-docstring">    @requires: L{YahooCompaniesParser.YahooCompaniesParser}</tt> </tt>
+<a name="L46"></a><tt class="py-lineno"> 46</tt>  <tt class="py-line"><tt class="py-docstring">    @requires: L{databaseConn.databaseConn}</tt> </tt>
+<a name="L47"></a><tt class="py-lineno"> 47</tt>  <tt class="py-line"><tt class="py-docstring">    @requires: L{companyStruct.companyStruct}</tt> </tt>
+<a name="L48"></a><tt class="py-lineno"> 48</tt>  <tt class="py-line"><tt class="py-docstring">    @param _threadType: unikalne id watku</tt> </tt>
+<a name="L49"></a><tt class="py-lineno"> 49</tt>  <tt class="py-line"><tt class="py-docstring">    @type _threadType: string</tt> </tt>
+<a name="L50"></a><tt class="py-lineno"> 50</tt>  <tt class="py-line"><tt class="py-docstring">    @param _fileHnd: indeks w tablicy deskryptorow plikow (elementu repreentujacego plik do zapisu danych) - ignorowane gdy przekazany jest uchwyt do bazy</tt> </tt>
+<a name="L51"></a><tt class="py-lineno"> 51</tt>  <tt class="py-line"><tt class="py-docstring">    @type _fileHnd: int</tt> </tt>
+<a name="L52"></a><tt class="py-lineno"> 52</tt>  <tt class="py-line"><tt class="py-docstring">    @param _parserC: obiekt parsera do przetwarzania podstawowych danych o spolce</tt> </tt>
+<a name="L53"></a><tt class="py-lineno"> 53</tt>  <tt class="py-line"><tt class="py-docstring">    @type _parserC: L{YahooCompaniesParser.YahooCompaniesParser}</tt> </tt>
+<a name="L54"></a><tt class="py-lineno"> 54</tt>  <tt class="py-line"><tt class="py-docstring">    @param _parserH: obiekt parsera do przetwarzania danych o wlascicielach spolek</tt> </tt>
+<a name="L55"></a><tt class="py-lineno"> 55</tt>  <tt class="py-line"><tt class="py-docstring">    @type _parserH: L{YahooCompaniesHoldersParser.YahooCompaniesHoldersParser}</tt> </tt>
+<a name="L56"></a><tt class="py-lineno"> 56</tt>  <tt class="py-line"><tt class="py-docstring">    @param _company: struktura danych reprezentujaca aktualnie przetwarzana spolke</tt> </tt>
+<a name="L57"></a><tt class="py-lineno"> 57</tt>  <tt class="py-line"><tt class="py-docstring">    @type _company: L{companyStruct.companyStruct}</tt> </tt>
+<a name="L58"></a><tt class="py-lineno"> 58</tt>  <tt class="py-line"><tt class="py-docstring">    @param _i: numer aktualnie przetwarzanej spolki</tt> </tt>
+<a name="L59"></a><tt class="py-lineno"> 59</tt>  <tt class="py-line"><tt class="py-docstring">    @type _i: int</tt> </tt>
+<a name="L60"></a><tt class="py-lineno"> 60</tt>  <tt class="py-line"><tt class="py-docstring">    @param _n: ogolna ilosc spolek do przetworzenia</tt> </tt>
+<a name="L61"></a><tt class="py-lineno"> 61</tt>  <tt class="py-line"><tt class="py-docstring">    @type _n: int</tt> </tt>
+<a name="L62"></a><tt class="py-lineno"> 62</tt>  <tt class="py-line"><tt class="py-docstring">    @param _ui: interface uzytkownika</tt> </tt>
+<a name="L63"></a><tt class="py-lineno"> 63</tt>  <tt class="py-line"><tt class="py-docstring">    @type _ui: L{crawlerGui.crawlerGui}</tt> </tt>
+<a name="L64"></a><tt class="py-lineno"> 64</tt>  <tt class="py-line"><tt class="py-docstring">    @param _db: uchwyt na baze danych</tt> </tt>
+<a name="L65"></a><tt class="py-lineno"> 65</tt>  <tt class="py-line"><tt class="py-docstring">    @type _db: L{databaseConn.databaseConn}</tt> </tt>
+<a name="L66"></a><tt class="py-lineno"> 66</tt>  <tt class="py-line"><tt class="py-docstring">    @see: L{threadType}</tt> </tt>
+<a name="L67"></a><tt class="py-lineno"> 67</tt>  <tt class="py-line"><tt class="py-docstring">    @see: L{ui}</tt> </tt>
+<a name="L68"></a><tt class="py-lineno"> 68</tt>  <tt class="py-line"><tt class="py-docstring">    @see: L{fileHnd}</tt> </tt>
+<a name="L69"></a><tt class="py-lineno"> 69</tt>  <tt class="py-line"><tt class="py-docstring">    @see: L{parserC}</tt> </tt>
+<a name="L70"></a><tt class="py-lineno"> 70</tt>  <tt class="py-line"><tt class="py-docstring">    @see: L{parserH}</tt> </tt>
+<a name="L71"></a><tt class="py-lineno"> 71</tt>  <tt class="py-line"><tt class="py-docstring">    @see: L{company}</tt> </tt>
+<a name="L72"></a><tt class="py-lineno"> 72</tt>  <tt class="py-line"><tt class="py-docstring">    @see: L{db}</tt> </tt>
+<a name="L73"></a><tt class="py-lineno"> 73</tt>  <tt class="py-line"><tt class="py-docstring">    @see: L{n}</tt> </tt>
+<a name="L74"></a><tt class="py-lineno"> 74</tt>  <tt class="py-line"><tt class="py-docstring">    @see: L{i}</tt> </tt>
+<a name="L75"></a><tt class="py-lineno"> 75</tt>  <tt class="py-line"><tt class="py-docstring">    """</tt> </tt>
+<a name="L76"></a><tt class="py-lineno"> 76</tt>  <tt class="py-line">    <tt class="py-name">threading</tt><tt class="py-op">.</tt><tt class="py-name">Thread</tt><tt class="py-op">.</tt><tt id="link-2" class="py-name" targets="Method YahooCompaniesParserThread.YahooCompaniesParserThread.__init__()=YahooCompaniesParserThread.YahooCompaniesParserThread-class.html#__init__,Method YahooCompaniesThread.YahooCompaniesThread.__init__()=YahooCompaniesThread.YahooCompaniesThread-class.html#__init__,Method YahooFinanceQuotesThread.YahooFinanceQuotesThread.__init__()=YahooFinanceQuotesThread.YahooFinanceQuotesThread-class.html#__init__,Method companyStruct.companyStruct.__init__()=companyStruct.companyStruct-class.html#__init__,Method crawlerGui.crawlerGui.__init__()=crawlerGui.crawlerGui-class.html#__init__,Method crawlerThread.crawlerThread.__init__()=crawlerThread.crawlerThread-class.html#__init__,Method databaseConn.databaseConn.__init__()=databaseConn.databaseConn-class.html#__init__,Method newsStruct.newsStruct.__init__()=newsStruct.newsStruct-class.html#__init__,Method parserThread.parserThread.__init__()=parserThread.parserThread-class.html#__init__,Method quotesThread.quotesThread.__init__()=quotesThread.quotesThread-class.html#__init__"><a title="YahooCompaniesParserThread.YahooCompaniesParserThread.__init__
+YahooCompaniesThread.YahooCompaniesThread.__init__
+YahooFinanceQuotesThread.YahooFinanceQuotesThread.__init__
+companyStruct.companyStruct.__init__
+crawlerGui.crawlerGui.__init__
+crawlerThread.crawlerThread.__init__
+databaseConn.databaseConn.__init__
+newsStruct.newsStruct.__init__
+parserThread.parserThread.__init__
+quotesThread.quotesThread.__init__" class="py-name" href="#" onclick="return doclink('link-2', '__init__', 'link-2');">__init__</a></tt><tt class="py-op">(</tt> <tt class="py-name">self</tt> <tt class="py-op">)</tt> </tt>
+<a name="L77"></a><tt class="py-lineno"> 77</tt>  <tt class="py-line">    <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">threadType</tt> <tt class="py-op">=</tt> <tt class="py-name">_threadType</tt> </tt>
+<a name="L78"></a><tt class="py-lineno"> 78</tt>  <tt class="py-line">    <tt class="py-string">u"""</tt> </tt>
+<a name="L79"></a><tt class="py-lineno"> 79</tt>  <tt class="py-line"><tt class="py-string">    @ivar: unikalne id watku</tt> </tt>
+<a name="L80"></a><tt class="py-lineno"> 80</tt>  <tt class="py-line"><tt class="py-string">    @type: string</tt> </tt>
+<a name="L81"></a><tt class="py-lineno"> 81</tt>  <tt class="py-line"><tt class="py-string">    """</tt> </tt>
+<a name="L82"></a><tt class="py-lineno"> 82</tt>  <tt class="py-line">    <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">ui</tt> <tt class="py-op">=</tt> <tt class="py-name">_ui</tt> </tt>
+<a name="L83"></a><tt class="py-lineno"> 83</tt>  <tt class="py-line">    <tt class="py-string">u"""</tt> </tt>
+<a name="L84"></a><tt class="py-lineno"> 84</tt>  <tt class="py-line"><tt class="py-string">    @ivar: interface uzytkownika</tt> </tt>
+<a name="L85"></a><tt class="py-lineno"> 85</tt>  <tt class="py-line"><tt class="py-string">    @type: L{crawlerGui.crawlerGui}</tt> </tt>
+<a name="L86"></a><tt class="py-lineno"> 86</tt>  <tt class="py-line"><tt class="py-string">    """</tt> </tt>
+<a name="L87"></a><tt class="py-lineno"> 87</tt>  <tt class="py-line">    <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">fileHnd</tt> <tt class="py-op">=</tt> <tt class="py-name">_fileHnd</tt> </tt>
+<a name="L88"></a><tt class="py-lineno"> 88</tt>  <tt class="py-line">    <tt class="py-string">u"""</tt> </tt>
+<a name="L89"></a><tt class="py-lineno"> 89</tt>  <tt class="py-line"><tt class="py-string">    @ivar: indeks do pliku w tablicy deskryptorow</tt> </tt>
+<a name="L90"></a><tt class="py-lineno"> 90</tt>  <tt class="py-line"><tt class="py-string">    @type: int</tt> </tt>
+<a name="L91"></a><tt class="py-lineno"> 91</tt>  <tt class="py-line"><tt class="py-string">    """</tt> </tt>
+<a name="L92"></a><tt class="py-lineno"> 92</tt>  <tt class="py-line">    <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">parserC</tt> <tt class="py-op">=</tt> <tt class="py-name">_parserC</tt> </tt>
+<a name="L93"></a><tt class="py-lineno"> 93</tt>  <tt class="py-line">    <tt class="py-string">u"""</tt> </tt>
+<a name="L94"></a><tt class="py-lineno"> 94</tt>  <tt class="py-line"><tt class="py-string">    @ivar: obiekt parsera do przetwarzania podstawowych danych o spolce</tt> </tt>
+<a name="L95"></a><tt class="py-lineno"> 95</tt>  <tt class="py-line"><tt class="py-string">    @type: L{YahooCompaniesParser.YahooCompaniesParser}</tt> </tt>
+<a name="L96"></a><tt class="py-lineno"> 96</tt>  <tt class="py-line"><tt class="py-string">    """</tt> </tt>
+<a name="L97"></a><tt class="py-lineno"> 97</tt>  <tt class="py-line">    <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">parserH</tt> <tt class="py-op">=</tt> <tt class="py-name">_parserH</tt> </tt>
+<a name="L98"></a><tt class="py-lineno"> 98</tt>  <tt class="py-line">    <tt class="py-string">u"""</tt> </tt>
+<a name="L99"></a><tt class="py-lineno"> 99</tt>  <tt class="py-line"><tt class="py-string">    @ivar: obiekt parsera do przetwarzania danych o wlascicielach spolki</tt> </tt>
+<a name="L100"></a><tt class="py-lineno">100</tt>  <tt class="py-line"><tt class="py-string">    @type: L{YahooCompaniesHoldersParser.YahooCompaniesHoldersParser}</tt> </tt>
+<a name="L101"></a><tt class="py-lineno">101</tt>  <tt class="py-line"><tt class="py-string">    """</tt> </tt>
+<a name="L102"></a><tt class="py-lineno">102</tt>  <tt class="py-line">    <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">company</tt> <tt class="py-op">=</tt> <tt class="py-name">_company</tt> </tt>
+<a name="L103"></a><tt class="py-lineno">103</tt>  <tt class="py-line">    <tt class="py-string">u"""</tt> </tt>
+<a name="L104"></a><tt class="py-lineno">104</tt>  <tt class="py-line"><tt class="py-string">    @ivar: struktura danych reprezentujaca pojedyncza spolke</tt> </tt>
+<a name="L105"></a><tt class="py-lineno">105</tt>  <tt class="py-line"><tt class="py-string">    @type: L{companyStruct.companyStruct}</tt> </tt>
+<a name="L106"></a><tt class="py-lineno">106</tt>  <tt class="py-line"><tt class="py-string">    """</tt> </tt>
+<a name="L107"></a><tt class="py-lineno">107</tt>  <tt class="py-line">    <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">db</tt> <tt class="py-op">=</tt> <tt class="py-name">_db</tt> </tt>
+<a name="L108"></a><tt class="py-lineno">108</tt>  <tt class="py-line">    <tt class="py-string">u"""</tt> </tt>
+<a name="L109"></a><tt class="py-lineno">109</tt>  <tt class="py-line"><tt class="py-string">    @ivar: uchwyt na baze danych</tt> </tt>
+<a name="L110"></a><tt class="py-lineno">110</tt>  <tt class="py-line"><tt class="py-string">    @type: L{databaseConn.databaseConn}</tt> </tt>
+<a name="L111"></a><tt class="py-lineno">111</tt>  <tt class="py-line"><tt class="py-string">    """</tt> </tt>
+<a name="L112"></a><tt class="py-lineno">112</tt>  <tt class="py-line">    <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">n</tt> <tt class="py-op">=</tt> <tt class="py-name">_n</tt> </tt>
+<a name="L113"></a><tt class="py-lineno">113</tt>  <tt class="py-line">    <tt class="py-string">u"""</tt> </tt>
+<a name="L114"></a><tt class="py-lineno">114</tt>  <tt class="py-line"><tt class="py-string">    @ivar: ogolna ilosc spolek do przetworzenia</tt> </tt>
+<a name="L115"></a><tt class="py-lineno">115</tt>  <tt class="py-line"><tt class="py-string">    @type: int</tt> </tt>
+<a name="L116"></a><tt class="py-lineno">116</tt>  <tt class="py-line"><tt class="py-string">    """</tt> </tt>
+<a name="L117"></a><tt class="py-lineno">117</tt>  <tt class="py-line">    <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">i</tt> <tt class="py-op">=</tt> <tt class="py-name">_i</tt> </tt>
+<a name="L118"></a><tt class="py-lineno">118</tt>  <tt class="py-line">    <tt class="py-string">u"""</tt> </tt>
+<a name="L119"></a><tt class="py-lineno">119</tt>  <tt class="py-line"><tt class="py-string">    @ivar: kolejny numer aktualnie przetwarzanaej spolki</tt> </tt>
+<a name="L120"></a><tt class="py-lineno">120</tt>  <tt class="py-line"><tt class="py-string">    @type: int</tt> </tt>
+<a name="L121"></a><tt class="py-lineno">121</tt>  <tt class="py-line"><tt class="py-string">    """</tt> </tt>
+</div><a name="L122"></a><tt class="py-lineno">122</tt>  <tt class="py-line"> </tt>
+<a name="YahooCompaniesParserThread.run"></a><div id="YahooCompaniesParserThread.run-def"><a name="L123"></a><tt class="py-lineno">123</tt> <a class="py-toggle" href="#" id="YahooCompaniesParserThread.run-toggle" onclick="return toggle('YahooCompaniesParserThread.run');">-</a><tt class="py-line">  <tt class="py-keyword">def</tt> <a class="py-def-name" href="YahooCompaniesParserThread.YahooCompaniesParserThread-class.html#run">run</a><tt class="py-op">(</tt> <tt class="py-param">self</tt> <tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="YahooCompaniesParserThread.run-collapsed" style="display:none;" pad="+++" indent="++++++"></div><div id="YahooCompaniesParserThread.run-expanded"><a name="L124"></a><tt class="py-lineno">124</tt>  <tt class="py-line">    <tt class="py-docstring">u"""</tt> </tt>
+<a name="L125"></a><tt class="py-lineno">125</tt>  <tt class="py-line"><tt class="py-docstring">    Glowna funkcja watku. Sluzy do pobrania oraz zapisania danych (do pliku badz bazy) dotyczacych spolki.</tt> </tt>
+<a name="L126"></a><tt class="py-lineno">126</tt>  <tt class="py-line"><tt class="py-docstring">    @see: L{getCompany}</tt> </tt>
+<a name="L127"></a><tt class="py-lineno">127</tt>  <tt class="py-line"><tt class="py-docstring">    @see: L{company}</tt> </tt>
+<a name="L128"></a><tt class="py-lineno">128</tt>  <tt class="py-line"><tt class="py-docstring">    @see: L{parserC}</tt> </tt>
+<a name="L129"></a><tt class="py-lineno">129</tt>  <tt class="py-line"><tt class="py-docstring">    @see: L{fileHnd}</tt> </tt>
+<a name="L130"></a><tt class="py-lineno">130</tt>  <tt class="py-line"><tt class="py-docstring">    @see: L{ui}</tt> </tt>
+<a name="L131"></a><tt class="py-lineno">131</tt>  <tt class="py-line"><tt class="py-docstring">    @see: L{i}</tt> </tt>
+<a name="L132"></a><tt class="py-lineno">132</tt>  <tt class="py-line"><tt class="py-docstring">    @see: L{n}</tt> </tt>
+<a name="L133"></a><tt class="py-lineno">133</tt>  <tt class="py-line"><tt class="py-docstring">    @requires: L{YahooCompaniesParser}</tt> </tt>
+<a name="L134"></a><tt class="py-lineno">134</tt>  <tt class="py-line"><tt class="py-docstring">    @requires: L{crawlerGui.crawlerGui}</tt> </tt>
+<a name="L135"></a><tt class="py-lineno">135</tt>  <tt class="py-line"><tt class="py-docstring">    """</tt> </tt>
+<a name="L136"></a><tt class="py-lineno">136</tt>  <tt class="py-line">    <tt id="link-3" class="py-name" targets="Method crawlerGui.crawlerGui.start()=crawlerGui.crawlerGui-class.html#start"><a title="crawlerGui.crawlerGui.start" class="py-name" href="#" onclick="return doclink('link-3', 'start', 'link-3');">start</a></tt> <tt class="py-op">=</tt> <tt class="py-name">time</tt><tt class="py-op">.</tt><tt class="py-name">clock</tt><tt class="py-op">(</tt><tt class="py-op">)</tt> </tt>
+<a name="L137"></a><tt class="py-lineno">137</tt>  <tt class="py-line">    <tt class="py-keyword">print</tt> <tt class="py-string">'Watek [ '</tt> <tt class="py-op">+</tt> <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">threadType</tt> <tt class="py-op">+</tt> <tt class="py-string">' '</tt> <tt class="py-op">+</tt> <tt class="py-name">str</tt><tt class="py-op">(</tt> <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">i</tt> <tt class="py-op">)</tt> <tt class="py-op">+</tt> <tt class="py-string">' / '</tt> <tt class="py-op">+</tt> <tt class="py-name">str</tt><tt class="py-op">(</tt> <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">n</tt> <tt class="py-op">)</tt> <tt class="py-op">+</tt> <tt class="py-string">' ] zaczyna dzialanie ( '</tt> <tt class="py-op">+</tt> <tt class="py-name">str</tt><tt class="py-op">(</tt> <tt id="link-4" class="py-name"><a title="crawlerGui.crawlerGui.start" class="py-name" href="#" onclick="return doclink('link-4', 'start', 'link-3');">start</a></tt> <tt class="py-op">)</tt> <tt class="py-op">+</tt> <tt class="py-string">'s. )'</tt> <tt class="py-op">+</tt> <tt class="py-string">"\n     [ "</tt> <tt class="py-op">+</tt> <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">company</tt><tt class="py-op">.</tt><tt id="link-5" class="py-name" targets="Method companyStruct.companyStruct.getName()=companyStruct.companyStruct-class.html#getName"><a title="companyStruct.companyStruct.getName" class="py-name" href="#" onclick="return doclink('link-5', 'getName', 'link-5');">getName</a></tt><tt class="py-op">(</tt><tt class="py-op">)</tt> <tt class="py-op">+</tt> <tt class="py-string">' ]'</tt> </tt>
+<a name="L138"></a><tt class="py-lineno">138</tt>  <tt class="py-line">    <tt class="py-name">self</tt><tt class="py-op">.</tt><tt id="link-6" class="py-name" targets="Method YahooCompaniesParserThread.YahooCompaniesParserThread.getCompany()=YahooCompaniesParserThread.YahooCompaniesParserThread-class.html#getCompany"><a title="YahooCompaniesParserThread.YahooCompaniesParserThread.getCompany" class="py-name" href="#" onclick="return doclink('link-6', 'getCompany', 'link-6');">getCompany</a></tt><tt class="py-op">(</tt><tt class="py-op">)</tt> </tt>
+<a name="L139"></a><tt class="py-lineno">139</tt>  <tt class="py-line">    <tt class="py-keyword">if</tt> <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">parserC</tt><tt class="py-op">.</tt><tt class="py-name">industry</tt><tt class="py-op">.</tt><tt class="py-name">__len__</tt><tt class="py-op">(</tt><tt class="py-op">)</tt> <tt class="py-op">&gt;</tt> <tt class="py-number">0</tt> <tt class="py-keyword">and</tt> <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">parserC</tt><tt class="py-op">.</tt><tt class="py-name">sector</tt><tt class="py-op">.</tt><tt class="py-name">__len__</tt><tt class="py-op">(</tt><tt class="py-op">)</tt> <tt class="py-op">&gt;</tt> <tt class="py-number">0</tt><tt class="py-op">:</tt> </tt>
+<a name="L140"></a><tt class="py-lineno">140</tt>  <tt class="py-line">      <tt class="py-keyword">if</tt> <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">db</tt> <tt class="py-op">==</tt> <tt class="py-op">-</tt><tt class="py-number">1</tt><tt class="py-op">:</tt> </tt>
+<a name="L141"></a><tt class="py-lineno">141</tt>  <tt class="py-line">        <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">fileHnd</tt><tt class="py-op">.</tt><tt class="py-name">write</tt><tt class="py-op">(</tt> <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">company</tt><tt class="py-op">.</tt><tt id="link-7" class="py-name" targets="Method companyStruct.companyStruct.getXML()=companyStruct.companyStruct-class.html#getXML,Method newsStruct.newsStruct.getXML()=newsStruct.newsStruct-class.html#getXML"><a title="companyStruct.companyStruct.getXML
+newsStruct.newsStruct.getXML" class="py-name" href="#" onclick="return doclink('link-7', 'getXML', 'link-7');">getXML</a></tt><tt class="py-op">(</tt><tt class="py-op">)</tt> <tt class="py-op">)</tt> </tt>
+<a name="L142"></a><tt class="py-lineno">142</tt>  <tt class="py-line">      <tt class="py-keyword">else</tt><tt class="py-op">:</tt> </tt>
+<a name="L143"></a><tt class="py-lineno">143</tt>  <tt class="py-line">        <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">company</tt><tt class="py-op">.</tt><tt id="link-8" class="py-name" targets="Method YahooFinanceQuotesThread.YahooFinanceQuotesThread.toDatabase()=YahooFinanceQuotesThread.YahooFinanceQuotesThread-class.html#toDatabase,Method companyStruct.companyStruct.toDatabase()=companyStruct.companyStruct-class.html#toDatabase"><a title="YahooFinanceQuotesThread.YahooFinanceQuotesThread.toDatabase
+companyStruct.companyStruct.toDatabase" class="py-name" href="#" onclick="return doclink('link-8', 'toDatabase', 'link-8');">toDatabase</a></tt><tt class="py-op">(</tt> <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">db</tt> <tt class="py-op">)</tt> </tt>
+<a name="L144"></a><tt class="py-lineno">144</tt>  <tt class="py-line">    <tt class="py-keyword">print</tt> <tt class="py-string">'Watek [ '</tt> <tt class="py-op">+</tt> <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">threadType</tt> <tt class="py-op">+</tt> <tt class="py-string">' '</tt> <tt class="py-op">+</tt> <tt class="py-name">str</tt><tt class="py-op">(</tt> <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">i</tt> <tt class="py-op">)</tt> <tt class="py-op">+</tt> <tt class="py-string">' / '</tt> <tt class="py-op">+</tt> <tt class="py-name">str</tt><tt class="py-op">(</tt> <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">n</tt> <tt class="py-op">)</tt> <tt class="py-op">+</tt> <tt class="py-string">' ] konczy dzialanie ( '</tt> <tt class="py-op">+</tt> <tt class="py-name">str</tt><tt class="py-op">(</tt> <tt class="py-name">time</tt><tt class="py-op">.</tt><tt class="py-name">clock</tt><tt class="py-op">(</tt><tt class="py-op">)</tt> <tt class="py-op">-</tt> <tt id="link-9" class="py-name"><a title="crawlerGui.crawlerGui.start" class="py-name" href="#" onclick="return doclink('link-9', 'start', 'link-3');">start</a></tt> <tt class="py-op">)</tt> <tt class="py-op">+</tt> <tt class="py-string">'s. )'</tt> </tt>
+<a name="L145"></a><tt class="py-lineno">145</tt>  <tt class="py-line">    <tt class="py-keyword">if</tt> <tt class="py-keyword">not</tt> <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">ui</tt> <tt class="py-op">==</tt> <tt class="py-name">None</tt><tt class="py-op">:</tt> </tt>
+<a name="L146"></a><tt class="py-lineno">146</tt>  <tt class="py-line">      <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">ui</tt><tt class="py-op">.</tt><tt id="link-10" class="py-name" targets="Method crawlerGui.crawlerGui.endThread()=crawlerGui.crawlerGui-class.html#endThread"><a title="crawlerGui.crawlerGui.endThread" class="py-name" href="#" onclick="return doclink('link-10', 'endThread', 'link-10');">endThread</a></tt><tt class="py-op">(</tt> <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">threadType</tt> <tt class="py-op">)</tt> </tt>
+</div><a name="L147"></a><tt class="py-lineno">147</tt>  <tt class="py-line"> </tt>
+<a name="YahooCompaniesParserThread.getCompany"></a><div id="YahooCompaniesParserThread.getCompany-def"><a name="L148"></a><tt class="py-lineno">148</tt> <a class="py-toggle" href="#" id="YahooCompaniesParserThread.getCompany-toggle" onclick="return toggle('YahooCompaniesParserThread.getCompany');">-</a><tt class="py-line">  <tt class="py-keyword">def</tt> <a class="py-def-name" href="YahooCompaniesParserThread.YahooCompaniesParserThread-class.html#getCompany">getCompany</a><tt class="py-op">(</tt> <tt class="py-param">self</tt> <tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="YahooCompaniesParserThread.getCompany-collapsed" style="display:none;" pad="+++" indent="++++++"></div><div id="YahooCompaniesParserThread.getCompany-expanded"><a name="L149"></a><tt class="py-lineno">149</tt>  <tt class="py-line">    <tt class="py-docstring">u"""</tt> </tt>
+<a name="L150"></a><tt class="py-lineno">150</tt>  <tt class="py-line"><tt class="py-docstring">    Metoda pobierajaca dane o spolce z obiektow parserow.</tt> </tt>
+<a name="L151"></a><tt class="py-lineno">151</tt>  <tt class="py-line"><tt class="py-docstring">    @requires: L{companyStruct.companyStruct}</tt> </tt>
+<a name="L152"></a><tt class="py-lineno">152</tt>  <tt class="py-line"><tt class="py-docstring">    @see: L{companyStruct.companyStruct}</tt> </tt>
+<a name="L153"></a><tt class="py-lineno">153</tt>  <tt class="py-line"><tt class="py-docstring">    @see: L{company}</tt> </tt>
+<a name="L154"></a><tt class="py-lineno">154</tt>  <tt class="py-line"><tt class="py-docstring">    @see: L{parserH}</tt> </tt>
+<a name="L155"></a><tt class="py-lineno">155</tt>  <tt class="py-line"><tt class="py-docstring">    @see: L{parserC}    </tt> </tt>
+<a name="L156"></a><tt class="py-lineno">156</tt>  <tt class="py-line"><tt class="py-docstring">    """</tt> </tt>
+<a name="L157"></a><tt class="py-lineno">157</tt>  <tt class="py-line">    <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">parserC</tt><tt class="py-op">.</tt><tt id="link-11" class="py-name" targets="Method ReutersMobileParser.ReutersMobileParser.parsePageSource()=ReutersMobileParser.ReutersMobileParser-class.html#parsePageSource,Method defaultParser.defaultParser.parsePageSource()=defaultParser.defaultParser-class.html#parsePageSource"><a title="ReutersMobileParser.ReutersMobileParser.parsePageSource
+defaultParser.defaultParser.parsePageSource" class="py-name" href="#" onclick="return doclink('link-11', 'parsePageSource', 'link-11');">parsePageSource</a></tt><tt class="py-op">(</tt> <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">parserC</tt><tt class="py-op">.</tt><tt id="link-12" class="py-name" targets="Method YahooCompaniesHoldersParser.YahooCompaniesHoldersParser.getAddr()=YahooCompaniesHoldersParser.YahooCompaniesHoldersParser-class.html#getAddr,Method YahooCompaniesParser.YahooCompaniesParser.getAddr()=YahooCompaniesParser.YahooCompaniesParser-class.html#getAddr,Method defaultParser.defaultParser.getAddr()=defaultParser.defaultParser-class.html#getAddr"><a title="YahooCompaniesHoldersParser.YahooCompaniesHoldersParser.getAddr
+YahooCompaniesParser.YahooCompaniesParser.getAddr
+defaultParser.defaultParser.getAddr" class="py-name" href="#" onclick="return doclink('link-12', 'getAddr', 'link-12');">getAddr</a></tt><tt class="py-op">(</tt> <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">company</tt><tt class="py-op">.</tt><tt id="link-13" class="py-name" targets="Method companyStruct.companyStruct.getSymbol()=companyStruct.companyStruct-class.html#getSymbol"><a title="companyStruct.companyStruct.getSymbol" class="py-name" href="#" onclick="return doclink('link-13', 'getSymbol', 'link-13');">getSymbol</a></tt><tt class="py-op">(</tt><tt class="py-op">)</tt> <tt class="py-op">)</tt> <tt class="py-op">)</tt> </tt>
+<a name="L158"></a><tt class="py-lineno">158</tt>  <tt class="py-line">    <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">company</tt><tt class="py-op">.</tt><tt id="link-14" class="py-name" targets="Method companyStruct.companyStruct.setDescription()=companyStruct.companyStruct-class.html#setDescription"><a title="companyStruct.companyStruct.setDescription" class="py-name" href="#" onclick="return doclink('link-14', 'setDescription', 'link-14');">setDescription</a></tt><tt class="py-op">(</tt> <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">parserC</tt><tt class="py-op">.</tt><tt class="py-name">description</tt> <tt class="py-op">)</tt> </tt>
+<a name="L159"></a><tt class="py-lineno">159</tt>  <tt class="py-line">    <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">company</tt><tt class="py-op">.</tt><tt id="link-15" class="py-name" targets="Method companyStruct.companyStruct.setUrl()=companyStruct.companyStruct-class.html#setUrl,Method newsStruct.newsStruct.setUrl()=newsStruct.newsStruct-class.html#setUrl"><a title="companyStruct.companyStruct.setUrl
+newsStruct.newsStruct.setUrl" class="py-name" href="#" onclick="return doclink('link-15', 'setUrl', 'link-15');">setUrl</a></tt><tt class="py-op">(</tt> <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">parserC</tt><tt class="py-op">.</tt><tt class="py-name">companyUrl</tt> <tt class="py-op">)</tt> </tt>
+<a name="L160"></a><tt class="py-lineno">160</tt>  <tt class="py-line">    <tt class="py-keyword">for</tt> <tt class="py-name">industry</tt> <tt class="py-keyword">in</tt> <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">parserC</tt><tt class="py-op">.</tt><tt class="py-name">industry</tt><tt class="py-op">:</tt> </tt>
+<a name="L161"></a><tt class="py-lineno">161</tt>  <tt class="py-line">      <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">company</tt><tt class="py-op">.</tt><tt id="link-16" class="py-name" targets="Method companyStruct.companyStruct.addIndustry()=companyStruct.companyStruct-class.html#addIndustry"><a title="companyStruct.companyStruct.addIndustry" class="py-name" href="#" onclick="return doclink('link-16', 'addIndustry', 'link-16');">addIndustry</a></tt><tt class="py-op">(</tt> <tt class="py-name">industry</tt> <tt class="py-op">)</tt> </tt>
+<a name="L162"></a><tt class="py-lineno">162</tt>  <tt class="py-line">    <tt class="py-keyword">for</tt> <tt class="py-name">sector</tt> <tt class="py-keyword">in</tt> <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">parserC</tt><tt class="py-op">.</tt><tt class="py-name">sector</tt><tt class="py-op">:</tt> </tt>
+<a name="L163"></a><tt class="py-lineno">163</tt>  <tt class="py-line">      <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">company</tt><tt class="py-op">.</tt><tt id="link-17" class="py-name" targets="Method companyStruct.companyStruct.addSector()=companyStruct.companyStruct-class.html#addSector"><a title="companyStruct.companyStruct.addSector" class="py-name" href="#" onclick="return doclink('link-17', 'addSector', 'link-17');">addSector</a></tt><tt class="py-op">(</tt> <tt class="py-name">sector</tt> <tt class="py-op">)</tt> </tt>
+<a name="L164"></a><tt class="py-lineno">164</tt>  <tt class="py-line">    <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">parserH</tt><tt class="py-op">.</tt><tt id="link-18" class="py-name"><a title="ReutersMobileParser.ReutersMobileParser.parsePageSource
+defaultParser.defaultParser.parsePageSource" class="py-name" href="#" onclick="return doclink('link-18', 'parsePageSource', 'link-11');">parsePageSource</a></tt><tt class="py-op">(</tt> <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">parserH</tt><tt class="py-op">.</tt><tt id="link-19" class="py-name"><a title="YahooCompaniesHoldersParser.YahooCompaniesHoldersParser.getAddr
+YahooCompaniesParser.YahooCompaniesParser.getAddr
+defaultParser.defaultParser.getAddr" class="py-name" href="#" onclick="return doclink('link-19', 'getAddr', 'link-12');">getAddr</a></tt><tt class="py-op">(</tt> <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">company</tt><tt class="py-op">.</tt><tt id="link-20" class="py-name"><a title="companyStruct.companyStruct.getSymbol" class="py-name" href="#" onclick="return doclink('link-20', 'getSymbol', 'link-13');">getSymbol</a></tt><tt class="py-op">(</tt><tt class="py-op">)</tt> <tt class="py-op">)</tt> <tt class="py-op">)</tt> </tt>
+<a name="L165"></a><tt class="py-lineno">165</tt>  <tt class="py-line">    <tt class="py-keyword">if</tt> <tt class="py-keyword">not</tt> <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">parserH</tt><tt class="py-op">.</tt><tt id="link-21" class="py-name" targets="Method YahooCompaniesHoldersParser.YahooCompaniesHoldersParser.getHoldersList()=YahooCompaniesHoldersParser.YahooCompaniesHoldersParser-class.html#getHoldersList"><a title="YahooCompaniesHoldersParser.YahooCompaniesHoldersParser.getHoldersList" class="py-name" href="#" onclick="return doclink('link-21', 'getHoldersList', 'link-21');">getHoldersList</a></tt><tt class="py-op">(</tt><tt class="py-op">)</tt> <tt class="py-op">==</tt> <tt class="py-name">None</tt> <tt class="py-keyword">and</tt> <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">parserH</tt><tt class="py-op">.</tt><tt id="link-22" class="py-name"><a title="YahooCompaniesHoldersParser.YahooCompaniesHoldersParser.getHoldersList" class="py-name" href="#" onclick="return doclink('link-22', 'getHoldersList', 'link-21');">getHoldersList</a></tt><tt class="py-op">(</tt><tt class="py-op">)</tt><tt class="py-op">.</tt><tt class="py-name">__len__</tt><tt class="py-op">(</tt><tt class="py-op">)</tt> <tt class="py-op">&gt;</tt> <tt class="py-number">0</tt><tt class="py-op">:</tt> </tt>
+<a name="L166"></a><tt class="py-lineno">166</tt>  <tt class="py-line">      <tt class="py-keyword">for</tt> <tt class="py-name">holder</tt> <tt class="py-keyword">in</tt> <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">parserH</tt><tt class="py-op">.</tt><tt id="link-23" class="py-name"><a title="YahooCompaniesHoldersParser.YahooCompaniesHoldersParser.getHoldersList" class="py-name" href="#" onclick="return doclink('link-23', 'getHoldersList', 'link-21');">getHoldersList</a></tt><tt class="py-op">(</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+<a name="L167"></a><tt class="py-lineno">167</tt>  <tt class="py-line">        <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">company</tt><tt class="py-op">.</tt><tt id="link-24" class="py-name" targets="Method companyStruct.companyStruct.addHolder()=companyStruct.companyStruct-class.html#addHolder"><a title="companyStruct.companyStruct.addHolder" class="py-name" href="#" onclick="return doclink('link-24', 'addHolder', 'link-24');">addHolder</a></tt><tt class="py-op">(</tt> <tt class="py-name">holder</tt> <tt class="py-op">)</tt> </tt>
+</div></div><a name="L168"></a><tt class="py-lineno">168</tt>  <tt class="py-line"> </tt><script type="text/javascript">
+<!--
+expandto(location.href);
+// -->
+</script>
+</pre>
+<br />
+<!-- ==================== NAVIGATION BAR ==================== -->
+<table class="navbar" border="0" width="100%" cellpadding="0"
+       bgcolor="#a0c0ff" cellspacing="0">
+  <tr valign="middle">
+
+  <!-- Tree link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="module-tree.html">Trees</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Index link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="identifier-index.html">Indices</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Help link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="help.html">Help</a>&nbsp;&nbsp;&nbsp;</th>
+
+      <th class="navbar" width="100%"></th>
+  </tr>
+</table>
+<table border="0" cellpadding="0" cellspacing="0" width="100%%">
+  <tr>
+    <td align="left" class="footer">
+    Generated by Epydoc 3.0.1 on Thu Aug 30 14:19:32 2012
+    </td>
+    <td align="right" class="footer">
+      <a target="mainFrame" href="http://epydoc.sourceforge.net"
+        >http://epydoc.sourceforge.net</a>
+    </td>
+  </tr>
+</table>
+
+<script type="text/javascript">
+  <!--
+  // Private objects are initially displayed (because if
+  // javascript is turned off then we want them to be
+  // visible); but by default, we want to hide them.  So hide
+  // them unless we have a cookie that says to show them.
+  checkCookie();
+  // -->
+</script>
+</body>
+</html>
